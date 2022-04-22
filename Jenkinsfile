@@ -38,6 +38,16 @@ pipeline {
             }
         }
         
+        stage('Build2') {
+             steps {
+                 sh 'echo "Hello World"'
+                 sh '''
+                     echo "Multiline shell steps works too"
+                     ls -lah
+                 '''
+             }
+         }      
+        
         stage('Upload to AWS') {
               steps {
                   withAWS(region:'us-east-1',credentials:'elijah_leone') {
