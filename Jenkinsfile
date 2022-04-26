@@ -48,7 +48,7 @@ pipeline {
         stage('Upload to AWS') {
               steps {
                   withAWS(region:'us-east-1',credentials:'elijah_leone') {
-                  echo "Uploading content with AWS creds"'
+                  echo "Uploading content with AWS creds"
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'HelloWorld.py', bucket:'shred-jenkins-test')
                   }
               }
