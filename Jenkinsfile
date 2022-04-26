@@ -40,18 +40,15 @@ pipeline {
         
         stage('Build2') {
              steps {
-                 sh 'echo "Hello World"'
-                 sh '''
+                  echo "Hello World"'
                      echo "Multiline shell steps works too"
-                     ls -lah
-                 '''
              }
          }      
         
         stage('Upload to AWS') {
               steps {
                   withAWS(region:'us-east-1',credentials:'elijah_leone') {
-                  sh 'echo "Uploading content with AWS creds"'
+                  echo "Uploading content with AWS creds"'
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'HelloWorld.py', bucket:'shred-jenkins-test')
                   }
               }
