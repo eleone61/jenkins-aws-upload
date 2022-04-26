@@ -47,7 +47,7 @@ pipeline {
         
         stage('Upload to AWS') {
               steps {
-                  s3Upload acl: 'Private', bucket: 'shred-jenkins-test', file: 'HelloWorld.py'
+                  s3Upload(file:'HelloWorld.py', bucket:'shred-jenkins-test', path:'jenkins-aws-upload/HelloWorld.py')
                   }
               }
          }
