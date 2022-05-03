@@ -19,10 +19,8 @@ node {
         echo 'Testing'
     }
     stage('read yaml') {
-            steps {
                 script{data = readYaml(file: 'Jenkins.yaml')}
                 echo data.deployment.window.toString()
-            }
         }
 }
 
