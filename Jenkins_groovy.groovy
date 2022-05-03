@@ -10,7 +10,7 @@ def DEPLOY_STYLE = 'non-intrusive'
 def DEPLOY_WINDOW = 'asap'
 def YAML_path = 'dir/Jenkins.yaml'
 
-def data
+def createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType){
 node { 
     stage('Build') { 
         echo 'We are Building' 
@@ -19,7 +19,6 @@ node {
         echo 'Testing'
     }
     stage('Create yaml') {
-                def createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType){
                         sh """
                         cat << EOF > Jenkins.yaml 
                          apiVersion: v1
@@ -41,10 +40,10 @@ node {
                           healthcheckURI: ":80/irmod/test.html"
                         EOF
                     """
-        }
     }
     stage('Check Yaml') {
         cat Jenkins.yaml
+}
 }
 }
 
