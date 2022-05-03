@@ -10,7 +10,7 @@ def DEPLOY_STYLE = 'non-intrusive'
 def DEPLOY_WINDOW = 'asap'
 def YAML_path = 'dir/Jenkins.yaml'
 
-def createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType){
+def createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType)
 node { 
     stage('Build') { 
         echo 'We are Building' 
@@ -45,6 +45,6 @@ node {
         cat Jenkins.yaml
 }
 }
-}
+
 
 
