@@ -29,7 +29,7 @@ node {
             stage('read yaml') {
             steps {
                 script{
-                    data = readYaml file: "${YAML_path}"
+                    data = readYaml file: "Jenkins.yaml"
                 }
             }
         }
