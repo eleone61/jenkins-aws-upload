@@ -19,11 +19,6 @@ node {
         echo 'Testing'
     }
     if (currentBuild.currentResult == 'SUCCESS') {
-        agent any
-
-        environment {
-            filename = "Jenkins.yml"
-        }
 
         stages {
             stage('read yaml') {
@@ -36,4 +31,4 @@ node {
         }
     }
 }
-}
+
