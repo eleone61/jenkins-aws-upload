@@ -18,18 +18,12 @@ node {
     stage('Test') {
         echo 'Testing'
     }
-    if (currentBuild.currentResult == 'SUCCESS') {
-
-        stages {
-            stage('read yaml') {
+    stage('read yaml') {
             steps {
-                script{
-                    data = readYaml(file: 'Jenkins.yaml')
-                }
+                script{data = readYaml(file: 'Jenkins.yaml')}
                 echo data.deployment.window.toString()
             }
         }
-    }
 }
-}
+
 
