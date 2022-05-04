@@ -22,6 +22,9 @@ def createYAML(apiVersion, environment, appFamily, appName, version, buildID, de
                         EOF
                     """
     }
+  stage('Check YAML'){
+    cat Jenkins.yaml
+}
 }
 
 
