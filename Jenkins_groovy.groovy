@@ -1,10 +1,20 @@
-def createYAML(){
+def apiVersion = 'v1'
+def environment = 'dev'
+def AppFamily = 'TestFam'
+def appName = 'Test Application'
+def version = '1.0.0'
+def buildID = 'xyz'
+def deploymentType = 'container'
+
+def createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType){
                         sh """
                         cat << EOF > Jenkins.yaml 
-                         apiVersion: v1
-                         environment: dev
-                         version: 1.0.0
-                         buildID: xyz
+                         apiVersion: ${apiVersion}
+                         environment: ${environment}
+                         version: ${version}
+                         appFamily: ${AppFamily}
+                         appName: ${appName}
+                         buildID: ${buildID}
                          kind: deployment
                          manifest:
                           - application.jar
@@ -12,7 +22,7 @@ def createYAML(){
                           - dockerfile
                           - MD5NUM
                          deployment:
-                          type: container
+                          type: ${deploymentType}
                           target: EKS
                           style: non-intrusive
                           window: asap
