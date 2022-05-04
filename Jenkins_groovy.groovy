@@ -25,8 +25,8 @@ def createYAML(apiVersion, environment, appFamily, appName, version, buildID, de
     }
 node {
   stage('Create YAML'){
-     createYAML('v1', 'dev', 'TestFam', "Test Application', '1.0.0', 'xyz', 'container')
-    sh "cat Jenkins.yaml"
+     createYAML('v1', 'dev', 'TestFam', 'Test Application', '1.0.0', 'xyz', 'container') 
+                sh "cat Jenkins.yaml"
   }
 }
 
