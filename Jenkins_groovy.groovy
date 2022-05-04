@@ -4,7 +4,7 @@ def createYAML(apiVersion, environment, appFamily, appName, version, buildID, de
                          apiVersion: ${apiVersion}
                          environment: ${environment}
                          version: ${version}
-                         appFamily: ${AppFamily}
+                         appFamily: ${appFamily}
                          appName: ${appName}
                          buildID: ${buildID}
                          kind: deployment
