@@ -33,7 +33,7 @@ def createYAML(apiVersion, environment, appFamily, appName, version, buildID, de
     }
 node {
   stage('Create YAML'){
-     createYAML()
+     createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType)
     sh "cat Jenkins.yaml"
   }
 }
