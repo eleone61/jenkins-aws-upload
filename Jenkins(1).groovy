@@ -1,4 +1,4 @@
-def createYAML(apiVersion, environment, appFamily, appName, version, buildID, deploymentType){
+def createYAML(){
     sh """
       cat << EOF > Jenkins.yml 
        apiVersion: ${apiVersion}
@@ -26,7 +26,7 @@ def createYAML(apiVersion, environment, appFamily, appName, version, buildID, de
 
 node {
   stage('Create YAML') {
-    createYAML('v1', 'dev', 'TestFam', 'Test Application', '1.0.0', 'xyz', 'test') 
+    createYAML() 
     sh 'cat Jenkins.yml'
   }
   stage('Read YAML') {
