@@ -1,16 +1,16 @@
-def filename = 'Jenkins.yaml'
+
 
 
 node {
   stage('Read YAML') {
-    def data = readYaml(file: filename)
+    def data = readYaml('Jenkins.yml')
     return data
   }
 
   stage('Write Yaml') {
-    def datas = readYaml file: filename
+    def datas = readYaml('Jenkins.yml')
     datas.deployment.type = 'container' 
-    writeYaml file: filename, data: datas, overwrite: true
+    writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
   }
 }
 
