@@ -4,8 +4,8 @@ def datas = readYAML file: filename
 
 node {
   stage('Read YAML') {
-    def datas = readYAML file: filename
-    return datas
+    def data = readYAML file: filename
+    return data
   }
 
   stage('Write Yaml') {
