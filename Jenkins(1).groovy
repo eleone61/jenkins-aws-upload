@@ -20,7 +20,6 @@ def createYAML(apiVersion, environment, appFamily, appName, version, buildID, de
         window: asap
       #Optional Fields
         healthcheckURI: ":80/irmod/test.html"
-      EOF
     """
 }
 
