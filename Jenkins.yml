@@ -1,0 +1,28 @@
+apiVersion: v1
+
+environment: dev
+
+version: 1.0.0
+
+buildID: xyz
+
+kind: deployment
+
+manifest:
+  - application.jar
+  - Test.yaml
+  - dockerfile
+  - ${MD5NUM}
+
+deployment:
+  type: ${DEPLOY_TYPE}
+  target: EKS
+  style: non-intrusive
+  window: ASAP
+
+#Optional Fields
+healthcheckURI: ":80/irmod/test.html"
+
+  
+    
+        
