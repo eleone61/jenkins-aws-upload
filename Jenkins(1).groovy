@@ -3,6 +3,7 @@
 
 node {
   stage('Read YAML') {
+    sh 'ls'
     def data = readYaml('Jenkins.yml')
     return data
   }
