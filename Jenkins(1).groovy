@@ -1,5 +1,4 @@
 def filename = 'Jenkins.yaml'
-def datas = readYAML file: filename
 
 
 node {
