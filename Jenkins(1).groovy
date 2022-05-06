@@ -3,7 +3,7 @@ def filename = 'Jenkins.yaml'
 
 node {
   stage('Read YAML') {
-    def data = readYAML file: filename
+    def data = readYAML(file: filename)
     return data
   }
 
