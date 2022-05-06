@@ -1,11 +1,10 @@
 def filename = 'Jenkins.yaml'
-
+def datas = readYAML file: filename
 
 
 node {
   stage('Read YAML') {
-    datas = readYAML file: filename
-    return datas
+    println datas
   }
 
   stage('Write Yaml') {
