@@ -76,8 +76,6 @@ node {
         echo "finding files: " folder
             }
         }   
-    }
-}
 
 // def folder = new File('jenkins-aws-upload/Test Folder')
 //         folder.eachFileecurse FileType.FILES,   { file ->
