@@ -59,10 +59,10 @@ node {
     datas.appFamily = appFamily
     datas.appName = appName
     datas.buildID = buildID
-    datas.manifest[1] = jar_file
-    datas.manifest[2] = yaml_file
-    datas.manifest[3] = docker
-    datas.manifest[4] = MD5
+    datas.manifest[0] = jar_file
+    datas.manifest[1] = yaml_file
+    datas.manifest[2] = docker
+    datas.manifest[3] = MD5
     datas.deployment.type = DEPLOY_TYPE
     datas.deployment.target = DEPLOY_TARGET
     datas.deployment.style = DEPLOY_STYLE
