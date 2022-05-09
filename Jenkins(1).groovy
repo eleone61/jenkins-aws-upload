@@ -63,6 +63,8 @@ node {
   }
 
   stage('Write Yaml') {
+     def folder = findFiles(glob: 'test-folder/*')
+     echo "finding files: ${folder[0]}"
     def datas = readYaml file: 'Jenkins.yml'
     datas.apiVersion = apiVersion
     datas.environment = env
@@ -70,7 +72,7 @@ node {
     datas.appFamily = appFamily
     datas.appName = appName
     datas.buildID = buildID
-    datas.manifest[0] = jar_file
+    datas.manifest[0] = 
     datas.manifest[1] = yaml_file
     datas.manifest[2] = docker
     datas.manifest[3] = MD5
@@ -82,10 +84,6 @@ node {
     sh 'cat Jenkins.yml'
   }
     
-    stage('Test Build Manifest') {
-        def folder = findFiles(glob: 'test-folder/*')
-        echo "finding files: ${folder}"
-            }
         }   
 
 // def folder = new File('jenkins-aws-upload/Test Folder')
