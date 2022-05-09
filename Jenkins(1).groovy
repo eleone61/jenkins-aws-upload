@@ -38,6 +38,17 @@ def createYAML(){
     """
 }
 
+def createFolder(){
+    sh """
+            mkdir test-folder
+           
+            touch test-folder/file1.txt
+            touch test-folder/file2.yaml
+            touch test-folder/file3.jar
+            
+            
+           """
+}
 
 node {
   stage('Create YAML') {
@@ -71,18 +82,8 @@ node {
     sh 'cat Jenkins.yml'
   }
     
-    stage('create folder structure') {
-           sh """
-            mkdir test-folder
-           
-            touch test-folder/file1.txt
-            touch test-folder/file2.yaml
-            touch test-folder/file3.jar
-           """
-    }
-    
     stage('Test Build Manifest') {
-        def folder = findFiles(glob: '../test-folder/*.txt')
+        def folder = findFiles(glob: 'test-folder/*.txt')
         echo "finding files: ${folder}"
             }
         }   
