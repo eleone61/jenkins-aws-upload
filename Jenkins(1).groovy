@@ -24,10 +24,10 @@ def createYAML(){
        buildID: test
        kind: deployment
        manifest:
-        - application.jar
-        - Jenkins.yaml
-        - dockerfile
-        - MD5NUM
+        - Test
+        - Test
+        - Test
+        - Test
        deployment:
         type: test
         target: test
