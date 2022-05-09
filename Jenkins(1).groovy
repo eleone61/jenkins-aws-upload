@@ -72,15 +72,16 @@ node {
   }
     
     stage('Test Build Manifest') {
-        def folder = new File('jenkins-aws-upload/Test Folder')
-        folder.eachFileecurse FileType.FILES,   { file ->
-            if(!file.name.endsWith(".txt")) {
-                println "Listing Files ${file.absolutePath}"
+        def folder = findFiles(glob: '**/*.txt')
+        echo "finding files: " folder
             }
         }   
     }
 }
 
-
+// def folder = new File('jenkins-aws-upload/Test Folder')
+//         folder.eachFileecurse FileType.FILES,   { file ->
+//             if(!file.name.endsWith(".txt")) {
+//                 println "Listing Files ${file.absolutePath}"
 
 
