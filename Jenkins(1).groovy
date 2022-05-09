@@ -72,14 +72,13 @@ node {
     datas.appFamily = appFamily
     datas.appName = appName
     datas.buildID = buildID
-    datas.manifest[0] = 
-    datas.manifest[1] = yaml_file
-    datas.manifest[2] = docker
-    datas.manifest[3] = MD5
     datas.deployment.type = DEPLOY_TYPE
     datas.deployment.target = DEPLOY_TARGET
     datas.deployment.style = DEPLOY_STYLE
     datas.deployment.window = DEPLOY_WINDOW
+    for (int i = 0; i < folder.size(); i++) {
+    println folder[i]
+}   
     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
     sh 'cat Jenkins.yml'
   }
