@@ -70,7 +70,16 @@ node {
     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
     sh 'cat Jenkins.yml'
   }
-}
+    
+    stage('Test Build Manifest') {
+        def folder = new File('jenkins-aws-upload/Test Folder')
+        folder.eachFileecurse FileType.FILES,   { file ->
+            if(!file.name.endsWith(".txt")) {
+                println "Listing Files ${file.absolutePath}"
+            }
+        }   
+    }
+
 
 
 
