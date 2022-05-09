@@ -72,7 +72,7 @@ node {
   }
     
     stage('Test Build Manifest') {
-        def folder = findFiles(glob: '**/*.txt')
+        def folder = findFiles(glob: '**/jenkins-aws-ulpload/Test Folder/*.txt')
         echo "finding files: ${folder[0].name}"
             }
         }   
