@@ -72,7 +72,7 @@ node {
   }
     
     stage('Test Build Manifest') {
-        def folder = findFiles(glob: '../Test\ Folder/*.txt')
+        def folder = findFiles(glob: '../Test Folder/*.txt')
         echo "finding files: ${folder}"
             }
         }   
