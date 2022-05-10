@@ -82,7 +82,7 @@ node {
     for (int i = 0; i < folder.size(); i++) {
     println folder[i]
     
-        for files in folder[i]{
+        for (files in folder[i]) {
             if files.path.endswith(ext){
                 datas.manifest[2] = files
                 print(files)
