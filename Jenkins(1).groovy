@@ -80,22 +80,23 @@ node {
     datas.deployment.style = DEPLOY_STYLE
     datas.deployment.window = DEPLOY_WINDOW
     for (int i = 0; i < folder.size(); i++) {
-    println folder[i]
+        println folder[i]
+        datas.manifest[i] = folder[i]
     
-        for (files in folder[i]) {
-            if (files.path.endsWith(ext)) {
-                datas.manifest[2] = files
-                println files
-            }
-            else if(files.path.endsWith(ext2)) {
-                datas.manifest[1] = files
-                println files
-            }
-                 else {
-                datas.manifest[0] = files
-                println files
-            }
-        }
+//         for (files in folder[i]) {
+//             if (files.path.endsWith(ext)) {
+//                 datas.manifest[2] = files
+//                 println files
+//             }
+//             else if(files.path.endsWith(ext2)) {
+//                 datas.manifest[1] = files
+//                 println files
+//             }
+//                  else {
+//                 datas.manifest[0] = files
+//                 println files
+//             }
+//        }
 }   
     
     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
