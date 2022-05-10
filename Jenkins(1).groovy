@@ -87,11 +87,11 @@ node {
                 datas.manifest[2] = files
                 println files
             }
-            elseif (files.path.endsWith(ext2)) {
+            else if(files.path.endsWith(ext2)) {
                 datas.manifest[1] = files
                 println files
             }
-            elseif (files.path.endswith(ext3)) {
+                 else {
                 datas.manifest[0] = files
                 println files
             }
