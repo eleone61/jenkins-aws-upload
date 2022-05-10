@@ -79,31 +79,32 @@ node {
     datas.deployment.target = DEPLOY_TARGET
     datas.deployment.style = DEPLOY_STYLE
     datas.deployment.window = DEPLOY_WINDOW
-    for (int i = 0; i < folder.size(); i++) {
-        println folder[i]
-        datas.manifest[i] = folder[i]
-        echo 'step 1'
+    datas.manifest = [1, 2, 3]
+//     for (int i = 0; i < folder.size(); i++) {
+//         println folder[i]
+//         datas.manifest[i] = folder[i]
+//         echo 'step 1'
     
-        for (files in folder[i]) {
-            if (files.path.endsWith(ext)) {
-                datas.manifest[i] = files
-                println files
-            }
-            else if(files.path.endsWith(ext2)) {
-                datas.manifest[i] = files
-                println files
-            }
-                 else {
-                datas.manifest[i] = files
-                println files
-            }
-       }
-    } 
+//         for (files in folder[i]) {
+//             if (files.path.endsWith(ext)) {
+//                 datas.manifest[i] = files
+//                 println files
+//             }
+//             else if(files.path.endsWith(ext2)) {
+//                 datas.manifest[i] = files
+//                 println files
+//             }
+//                  else {
+//                 datas.manifest[i] = files
+//                 println files
+//             }
+//        }
+//     } 
 
- println datas.manifest
-//       for (i = 0; i < datas.manifest.size(); i++) {
-//        writeYaml file: 'Jenkins.yml', data: datas.add(datas.manifest[i]), overwrite: true 
-//       }
+//  println datas.manifest
+// //       for (i = 0; i < datas.manifest.size(); i++) {
+// //        writeYaml file: 'Jenkins.yml', data: datas.add(datas.manifest[i]), overwrite: true 
+// //       }
     
     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
     sh 'cat Jenkins.yml'
