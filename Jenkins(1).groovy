@@ -66,7 +66,7 @@ node {
   }
 
   stage('Write Yaml') {
-     def folder = findFiles(glob: 'test-folder/*').toString()
+     def folder = findFiles(glob: 'test-folder/*')
      echo "finding files: ${folder}"
     def datas = readYaml file: 'Jenkins.yml'
     datas.apiVersion = apiVersion
@@ -79,13 +79,16 @@ node {
     datas.deployment.target = DEPLOY_TARGET
     datas.deployment.style = DEPLOY_STYLE
     datas.deployment.window = DEPLOY_WINDOW
-    datas.manifest = folder
+    
 //       datas.manifest = [['test-folder/file1.txt', 'test-folder/file2.yaml', 'test-folder/file3.jar'] ] 
     
-//     for (int i = 0; i < folder.size(); i++) {
-//         println folder[i]
-//         datas.manifest[i] = folder[i]
-//         echo 'step 1'
+   temp = []
+     for (int i = 0; i < folder.size(); i++) {
+        println folder[i]
+        temp.add(folder[i].toString) = folder[i]
+        echo 'step 1'
+     }
+    datas.manifest = temp
     
 //         for (files in folder[i]) {
 //             if (files.path.endsWith(ext)) {
@@ -99,7 +102,7 @@ node {
 //                  else {
 //                 datas.manifest[i] = files
 //                 println files
-//             }
+//          }
 //        }
 //     } 
 
