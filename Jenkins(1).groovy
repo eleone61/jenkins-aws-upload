@@ -12,6 +12,9 @@ def DEPLOY_TYPE = 'container'
 def DEPLOY_TARGET = 'EKS'
 def DEPLOY_STYLE = 'non-intrusive'
 def DEPLOY_WINDOW = 'asap'
+def ext = '.txt'
+def ext2 = '.yaml'
+def ext3 = '.jar'
 
 def createYAML(){
     sh """
@@ -64,7 +67,7 @@ node {
 
   stage('Write Yaml') {
      def folder = findFiles(glob: 'test-folder/*')
-     echo "finding files: ${folder[0]}"
+     echo "finding files: ${folder}"
     def datas = readYaml file: 'Jenkins.yml'
     datas.apiVersion = apiVersion
     datas.environment = env
@@ -78,7 +81,23 @@ node {
     datas.deployment.window = DEPLOY_WINDOW
     for (int i = 0; i < folder.size(); i++) {
     println folder[i]
+    
+        for files in folder[i]{
+            if files.path.endswith(ext){
+                datas.manifest[2] = files
+                print(files)
+            }
+            elseif files.path.endswith(ext2){
+                datas.manifest[1] = files
+                print(files)
+            }
+            elseif files.path.endswith(ext3){
+                datas.manifest[0] = files
+                print(files)
+            }
+        }
 }   
+    
     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
     sh 'cat Jenkins.yml'
   }
