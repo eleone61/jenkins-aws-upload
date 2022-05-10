@@ -83,17 +83,17 @@ node {
     println folder[i]
     
         for (files in folder[i]) {
-            if (files.path.endswith(ext)) {
+            if (files.path.endsWith(ext)) {
                 datas.manifest[2] = files
-                print(files)
+                echo files
             }
-            elseif (files.path.endswith(ext2)) {
+            elseif (files.path.endsWith(ext2)) {
                 datas.manifest[1] = files
-                print(files)
+                echo files
             }
             elseif (files.path.endswith(ext3)) {
                 datas.manifest[0] = files
-                print(files)
+                echo files
             }
         }
 }   
