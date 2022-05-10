@@ -82,6 +82,7 @@ node {
     for (int i = 0; i < folder.size(); i++) {
         println folder[i]
         datas.manifest[i] = folder[i]
+        echo 'step 1'
     
 //         for (files in folder[i]) {
 //             if (files.path.endsWith(ext)) {
