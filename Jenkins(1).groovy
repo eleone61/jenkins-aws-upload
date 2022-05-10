@@ -100,7 +100,7 @@ node {
 //        }
     } 
 
- echo datas.manifest     
+ println datas.manifest     
     
     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
     sh 'cat Jenkins.yml'
