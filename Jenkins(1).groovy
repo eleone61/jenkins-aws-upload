@@ -79,7 +79,8 @@ node {
     datas.deployment.target = DEPLOY_TARGET
     datas.deployment.style = DEPLOY_STYLE
     datas.deployment.window = DEPLOY_WINDOW
-//     datas.manifest = [['test-folder/file1.txt', 'test-folder/file2.yaml', 'test-folder/file3.jar'] ] 
+    datas.manifest = folder
+//       datas.manifest = [['test-folder/file1.txt', 'test-folder/file2.yaml', 'test-folder/file3.jar'] ] 
     
 //     for (int i = 0; i < folder.size(); i++) {
 //         println folder[i]
