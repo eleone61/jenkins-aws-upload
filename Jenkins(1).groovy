@@ -100,9 +100,12 @@ node {
 //        }
     } 
 
- println datas.manifest     
+ println datas.manifest
+      for (i = 0; i < datas.manifest.size(); i++) {
+       writeYaml file: 'Jenkins.yml', data: datas.manifest[i], overwrite: true 
+      }
     
-    writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
+//     writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
     sh 'cat Jenkins.yml'
   }
     
