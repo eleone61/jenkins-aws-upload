@@ -85,7 +85,8 @@ node {
    temp = []
      for (int i = 0; i < folder.size(); i++) {
         println folder[i]
-        temp.add(folder[i].toString) 
+        value = folder[i].toString()
+        temp.add(value) 
         echo 'step 1'
      }
     datas.manifest = temp
