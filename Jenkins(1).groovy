@@ -79,7 +79,8 @@ node {
     datas.deployment.target = DEPLOY_TARGET
     datas.deployment.style = DEPLOY_STYLE
     datas.deployment.window = DEPLOY_WINDOW
-    datas.manifest = [1, 2, 3]
+    datas.manifest = folder  
+    
 //     for (int i = 0; i < folder.size(); i++) {
 //         println folder[i]
 //         datas.manifest[i] = folder[i]
