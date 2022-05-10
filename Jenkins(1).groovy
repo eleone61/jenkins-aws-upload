@@ -84,20 +84,20 @@ node {
         datas.manifest[i] = folder[i]
         echo 'step 1'
     
-//         for (files in folder[i]) {
-//             if (files.path.endsWith(ext)) {
-//                 datas.manifest[2] = files
-//                 println files
-//             }
-//             else if(files.path.endsWith(ext2)) {
-//                 datas.manifest[1] = files
-//                 println files
-//             }
-//                  else {
-//                 datas.manifest[0] = files
-//                 println files
-//             }
-//        }
+        for (files in folder[i]) {
+            if (files.path.endsWith(ext)) {
+                datas.manifest[i] = files
+                println files
+            }
+            else if(files.path.endsWith(ext2)) {
+                datas.manifest[i] = files
+                println files
+            }
+                 else {
+                datas.manifest[i] = files
+                println files
+            }
+       }
     } 
 
  println datas.manifest
