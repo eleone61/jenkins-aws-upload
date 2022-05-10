@@ -85,15 +85,15 @@ node {
         for (files in folder[i]) {
             if (files.path.endsWith(ext)) {
                 datas.manifest[2] = files
-                echo files
+                println files
             }
             elseif (files.path.endsWith(ext2)) {
                 datas.manifest[1] = files
-                echo files
+                println files
             }
             elseif (files.path.endswith(ext3)) {
                 datas.manifest[0] = files
-                echo files
+                println files
             }
         }
 }   
