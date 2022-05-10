@@ -66,7 +66,7 @@ node {
   }
 
   stage('Write Yaml') {
-     def folder = toString(findFiles(glob: 'test-folder/*'))
+     def folder = findFiles(glob: 'test-folder/*').toString()
      echo "finding files: ${folder}"
     def datas = readYaml file: 'Jenkins.yml'
     datas.apiVersion = apiVersion
