@@ -3,14 +3,14 @@ def buildID = '$(buildID)'
 
 def Yamldata = [
     'apiVersion': 'v1',
-    'environment': 'test',
+    'environment': env,
     'version': 1.0,
     'appFamily': 'FBP',
     'appName': 'FBP-product-app',
-    'buildID': 'test',
+    'buildID': buildID,
     'kind': 'deployment',
     'manifest': '',
-    'deployment': '',
+    'deployment': 
         'type': 'container',
         'target': 'EKS',
         'style': 'non-intrusive',
