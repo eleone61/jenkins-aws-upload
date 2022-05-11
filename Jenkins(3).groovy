@@ -23,17 +23,17 @@ node {
     stage('Find DATA') {
         def folder = sh script: """
                                 cd /home/jenkins
-                                ls
+                                
                                 zip -sf test.zip | sed '1d;\$d'
                                """, returnStdout: true
                            
         echo "finding files: ${folder}"
-        temp = []
-        for (int i = 0; i < folder.size(); i++) {
-        println folder[i]
-        value = folder[i].toString()
-        temp.add(value) 
-        echo 'step 1'
+//         temp = []
+//         for (int i = 0; i < folder.size(); i++) {
+//         println folder[i]
+//         value = folder[i].toString()
+//         temp.add(value) 
+//         echo 'step 1'
         }
         
         Yamldata.manifest = temp
