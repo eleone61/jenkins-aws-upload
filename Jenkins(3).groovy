@@ -19,16 +19,9 @@ def Yamldata = [
 ]
 
 node {
-    stage('Write Yaml') {
-        sh 'rm manifest.yaml'
-        writeYaml file: 'manifest.yaml', data: Yamldata
-        sh 'cat manifest.yaml'
+    stage('Find DATA') {
         def folder = findFiles(glob: 'test-folder/*')
             echo "finding files: ${folder}"
-        def datas = readYaml file: 'manifest.yaml'
-        datas.environment = env
-        datas.buildID = buildID
-        
         temp = []
         for (int i = 0; i < folder.size(); i++) {
         println folder[i]
@@ -37,9 +30,20 @@ node {
         echo 'step 1'
         }
         
-        datas.manifest = temp
+        Yamldata.manifest = temp
         
-        writeYaml file: 'manifest.yaml', data: datas, overwrite: true
+    }
+    
+        
+    stage('Write Yaml') {
+        sh 'rm manifest.yaml'
+        writeYaml file: 'manifest.yaml', data: Yamldata
+        sh 'cat manifest.yaml'
+//         def datas = readYaml file: 'manifest.yaml'
+// //         datas.environment = env
+// //         datas.buildID = buildID
+        
+        
         sh 'cat manifest.yaml'
     }
 }
