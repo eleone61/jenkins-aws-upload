@@ -34,9 +34,9 @@ node {
 //         value = folder[i].toString()
 //         temp.add(value) 
 //         echo 'step 1'
-        }
+//      }
         
-        Yamldata.manifest = temp
+//         Yamldata.manifest = temp
         
     }
     
