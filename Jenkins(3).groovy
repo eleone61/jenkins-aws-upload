@@ -7,7 +7,7 @@ def Yamldata = [
     'buildID': 'test',
     'kind': 'deployment',
     'manifest': '',
-    'deployment':
+    'deployment': '',
         'type': 'container',
         'target': 'EKS',
         'style': 'non-intrusive',
