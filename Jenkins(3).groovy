@@ -6,7 +6,7 @@ def Yamldata = [
     'appName': 'FBP-product-app',
     'buildID': 'test',
     'kind': 'deployment',
-    'manifest':
+    'manifest': '',
     'deployment':
         'type': 'container',
         'target': 'EKS',
