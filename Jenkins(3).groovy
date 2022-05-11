@@ -28,7 +28,7 @@ node {
                                """, returnStdout: true
                            
         echo "finding files: ${folder}"
-        echo "${folder[1]}"
+        echo "${folder}[1]"
 //         temp = []
 //         for (int i = 0; i < folder.size(); i++) {
 //         println folder[i]
