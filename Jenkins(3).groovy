@@ -25,7 +25,7 @@ node {
             ls
             cd testzip
             ls
-            zip -sf testzip | sed '1d;\$d'
+            zip -sf testzip.zip | sed '1d;\$d'
            """
         echo "finding files: ${folder}"
         temp = []
