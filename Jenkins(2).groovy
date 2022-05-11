@@ -12,10 +12,6 @@ def createYAML(){
        buildID: test
        kind: deployment
        manifest:
-        - 
-        - 
-        - 
-        - 
        deployment:
         type: container
         target: EKS
