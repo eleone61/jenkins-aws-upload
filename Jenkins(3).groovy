@@ -22,10 +22,9 @@ def Yamldata = [
 node {  
     stage('Find DATA') {
         sh """
+            cd /home/jenkins
             ls
-            cd testzip
-            ls
-            zip -sf testzip.zip | sed '1d;\$d'
+            zip -sf test.zip | sed '1d;\$d'
            """
         echo "finding files: ${folder}"
         temp = []
