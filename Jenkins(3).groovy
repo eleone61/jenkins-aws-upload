@@ -21,7 +21,7 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        def folder = script{ sh """
+        def folder = returnStdout: true, script{ sh """
                                 cd /home/jenkins
                                 ls
                                 zip -sf test.zip | sed '1d;\$d'
