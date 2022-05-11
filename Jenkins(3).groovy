@@ -18,10 +18,18 @@ def Yamldata = [
     ]
 ]
 
-node {
+def folder() {
+    sh"""
+        cd testzip
+        zip -sf testzip | sed '1d;$d'
+
+node {  
     stage('Find DATA') {
-        def folder = findFiles(glob: 'test-folder/*')
-            echo "finding files: ${folder}"
+        def folder = sh"""
+                        cd testzip
+                        zip -sf testzip | sed '1d;$d'
+                      """
+        echo "finding files: ${folder}"
         temp = []
         for (int i = 0; i < folder.size(); i++) {
         println folder[i]
@@ -44,6 +52,5 @@ node {
 // //         datas.buildID = buildID
         
         
-        sh 'cat manifest.yaml'
     }
 }
