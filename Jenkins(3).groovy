@@ -18,10 +18,6 @@ def Yamldata = [
     ]
 ]
 
-def folder() {
-    sh"""
-        cd testzip
-        zip -sf testzip | sed '1d;$d'
 
 node {  
     stage('Find DATA') {
