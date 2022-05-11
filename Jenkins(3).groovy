@@ -28,14 +28,14 @@ node {
                                """, returnStdout: true
                            
         echo "finding files: ${folder}"
-        echo "${folder[0]}"
-//         temp = []
-//         for (int i = 0; i < folder.size(); i++) {
-//         println folder[i]
-//         value = folder[i].toString()
-//         temp.add(value) 
-//         echo 'step 1'
-//      }
+//         echo "${folder[0]}"
+        temp = []
+        for (int i = 0; i < folder.size(); i++) {
+        println folder[i]
+        value = folder[i].toString()
+        temp.add(value) 
+        echo 'step 1'
+     }
         
 //         Yamldata.manifest = temp
         
