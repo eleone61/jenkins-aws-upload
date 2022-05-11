@@ -29,10 +29,24 @@ node {
         createYAML()
         sh 'cat manifest.yaml'
     }
+    
     stage('Write YAML') {
+        def folder = findFiles(glob: 'test-folder/*')
+            echo "finding files: ${folder}"
         def datas = readYaml file: 'manifest.yaml'
         datas.environment = env
         datas.buildID = buildID
+        
+        temp = []
+        for (int i = 0; i < folder.size(); i++) {
+        println folder[i]
+        value = folder[i].toString()
+        temp.add(value) 
+        echo 'step 1'
+        }
+        
+        datas.manifest = temp
+        
         writeYaml file: 'manifest.yaml', data: datas, overwrite: true
         sh 'cat manifest.yaml'
     }
