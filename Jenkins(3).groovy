@@ -23,7 +23,7 @@ node {
     stage('Find DATA') {
         def folder = sh"""
                         cd testzip
-                        zip -sf testzip | sed '1d;$d'
+                        zip -sf testzip.zip | sed '1d;$d'
                       """
         echo "finding files: ${folder}"
         temp = []
