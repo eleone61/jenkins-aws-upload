@@ -25,7 +25,7 @@ node {
                                 cd /home/jenkins
                                 ls
                                 zip -sf test.zip | sed '1d;\$d'
-                               """, returnStdout: true,
+                               """, returnStdout: true
                            
         echo "finding files: ${folder}"
         temp = []
