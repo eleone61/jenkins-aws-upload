@@ -21,11 +21,11 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        def folder = $(sh script: """
+        def folder = sh script: """
                                 cd /home/jenkins
                                 
                                 output=( zip -sf test.zip | sed '1d;\$d' )
-                               """, returnStdout: true)
+                               """, returnStdout: true
                            
         echo "finding files: ${folder}"
 //         echo "${folder[0]}"
