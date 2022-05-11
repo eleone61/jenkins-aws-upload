@@ -21,9 +21,12 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        sh 'ls'
-        sh 'cd testzip'
-        sh 'ls'
+        sh """
+            ls
+            cd testzip
+            ls
+            zip -sf testzip | sed '1d;$d'
+           """
         echo "finding files: ${folder}"
         temp = []
         for (int i = 0; i < folder.size(); i++) {
