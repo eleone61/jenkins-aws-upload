@@ -24,7 +24,7 @@ node {
         def folder = $(sh script: """
                                 cd /home/jenkins
                                 
-                                zip -sf test.zip | sed '1d;\$d'
+                                output=( zip -sf test.zip | sed '1d;\$d' )
                                """, returnStdout: true)
                            
         echo "finding files: ${folder}"
