@@ -22,7 +22,7 @@ def Yamldata = [
 node {  
     stage('Find DATA') {
         sh 'pwd'
-        def folder = unzip dir: '/var/jenkins_home/workspace/Jenkins\ Test\ 5/test', zipFile: 'test.zip', read: true String
+        def folder = unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
         
         echo "finding files: ${folder}"
         echo "${folder[0]}"
