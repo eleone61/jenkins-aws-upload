@@ -22,10 +22,10 @@ def Yamldata = [
 node {  
     stage('Find DATA') {
         sh 'pwd'
-        def folder = unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
-        
-        echo "finding files: ${folder}"
-        echo "${folder[0]}"
+        tee('test.txt') {
+            unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
+        }
+       sh 'cat test.txt'
 //         sh 'pwd'
 //         def folder = sh script: """
 //                                 zip -sf test.zip | sed '1d;\$d' | sed -r 's/\\s+//g' > file_list.txt
