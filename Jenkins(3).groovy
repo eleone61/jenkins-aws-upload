@@ -21,13 +21,13 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        def folder = sh script: """
-                                cd /home/jenkins
-                                touch text.txt
-                                zip -sf test.zip | sed '1d;\$d' > test.txt
-                                cat test.txt
-                               """
-                           
+    sh script: """
+                cd /home/jenkins
+        //                                 touch text.txt
+        //                                 zip -sf test.zip | sed '1d;\$d' > test.txt
+        //                                 cat test.txt
+               """
+        def folder = unzip zipfile: 'test.zip', glob: '', read: true String version = v['test1.txt']                    
         echo "finding files: ${folder}"
 //         echo "${folder[0]}"
         temp = []
