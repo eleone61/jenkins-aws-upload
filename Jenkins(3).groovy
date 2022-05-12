@@ -32,6 +32,7 @@ node {
         sh 'ls && pwd'
         file = readFile('file_list.txt')
         def lines = file.readLines()
+        println (lines[0])
 //         temp = []
 //         for (int i = 0; i < lines.size(); i++) {
 //         println lines[i]
