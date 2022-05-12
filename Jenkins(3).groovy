@@ -26,7 +26,7 @@ node {
                                 touch text.txt
                                 zip -sf test.zip | sed '1d;\$d' > test.txt
                                 cat test.txt
-                               """, returnStdout: t
+                               """
                            
         echo "finding files: ${folder}"
 //         echo "${folder[0]}"
