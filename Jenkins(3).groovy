@@ -27,9 +27,7 @@ node {
         }
         sh """
            cat test1.txt
-           sed -e 's/Reading://g' 'test1.txt'
-           sed '1d;\$d' 'test1.txt'
-           sed -r 's/\\s+//g' 'test1.txt'
+           sed -e 's/Reading://g' | sed '1d;\$d' | sed -r 's/\\s+//g' > 'test1.txt'
            """
        sh 'cat test1.txt'
 //         sh 'pwd'
