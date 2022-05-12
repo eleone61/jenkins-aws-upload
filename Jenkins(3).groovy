@@ -21,19 +21,26 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        sh 'cd testzip'
-        def folder = unzip zipFile: 'testzip.zip', glob: '', read: true String version = v['test1.txt']                    
-        echo "finding files: ${folder}"
-//         echo "${folder[0]}"
-        temp = []
-        for (int i = 0; i < folder.size(); i++) {
-        println folder[i]
-        value = folder[i].toString()
-        temp.add(value) 
-        echo 'step 1'
-     }
+//         sh 'cd testzip'
+//         def folder = unzip zipFile: 'testzip.zip', glob: '', read: true String version = v['test1.txt']                    
+//         echo "finding files: ${folder}"
+// //         echo "${folder[0]}"
+        sh 'pwd'
+        def folder = sh script: """
+                                zip -sf test.zip | sed '1d;\$d' | sed -r 's/\\s+//g' > file_list.txt
+                                """
+        sh 'ls && pwd'
+        file = readFile('file_list.txt')
+        def lines = file.readLines()
+//         temp = []
+//         for (int i = 0; i < lines.size(); i++) {
+//         println lines[i]
+//         value = lines[i].toString()
+//         temp.add(value) 
+//         echo 'step 1'
+//      }
         
-//         Yamldata.manifest = temp
+        Yamldata.manifest = lines
         
     }
     
