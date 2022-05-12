@@ -24,6 +24,7 @@ node {
         sh 'pwd'
         tee('test.txt') {
             unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
+            sed '1d;\$d' | sed -r 's/\\s+//g'
         }
        sh 'cat test.txt'
 //         sh 'pwd'
