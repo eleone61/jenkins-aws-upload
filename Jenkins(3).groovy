@@ -29,15 +29,15 @@ node {
            cat test1.txt
            sed -e 's/Reading://g' | sed '1d;\$d' | sed -r 's/\\s+//g' 'test1.txt' > 'test2.txt'
            """
-       sh 'cat test1.txt'
+       sh 'cat test2.txt'
 //         sh 'pwd'
 //         def folder = sh script: """
 //                                 zip -sf test.zip | sed '1d;\$d' | sed -r 's/\\s+//g' > file_list.txt
 //                                 """
 //         sh 'ls && pwd'
-//         file = readFile('file_list.txt')
-//         def lines = file.readLines()
-//         println (lines[0])
+        file = readFile('test2.txt')
+        def lines = file.readLines()
+        println (lines[0])
 //         temp = []
 //         for (int i = 0; i < lines.size(); i++) {
 //         println lines[i]
@@ -46,7 +46,7 @@ node {
 //         echo 'step 1'
 //      }
         
-//         Yamldata.manifest = lines
+        Yamldata.manifest = lines
         
     }
     
