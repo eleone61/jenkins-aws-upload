@@ -22,7 +22,8 @@ def Yamldata = [
 node {  
     stage('Find DATA') {
         sh 'pwd'
-        def folder = unzip zipFile: 'test.zip'                    
+        def folder = unzip dir: '/test', zipFile: 'test.zip', read: true String
+        
         echo "finding files: ${folder}"
         echo "${folder[0]}"
 //         sh 'pwd'
