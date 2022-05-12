@@ -27,7 +27,7 @@ node {
 // //         echo "${folder[0]}"
         sh 'pwd'
         def folder = sh script: """
-                                zip -sf testzip.zip | sed '1d;\$d' | sed -r 's/\\s+//g' > file_list.txt
+                                zip -sf test.zip | sed '1d;\$d' | sed -r 's/\\s+//g' > file_list.txt
                                 """
         sh 'ls && pwd'
         file = readFile('file_list.txt')
