@@ -22,6 +22,11 @@ def Yamldata = [
 node {  
     stage('Find DATA') {
         sh 'pwd'
+        if ('test1.txt' || 'test2.txt') {
+            sh 'rm test1.txt'
+            sh 'rm test2.txt'
+            touch file: 'test1.txt'
+        }
         tee('test1.txt') {
             unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
         }
