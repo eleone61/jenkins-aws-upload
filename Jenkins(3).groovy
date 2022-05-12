@@ -46,7 +46,7 @@ node {
     
         
     stage('Write Yaml') {
-        if (manifest.yaml) {
+        if ('manifest.yaml') {
             sh 'rm manifest.yaml'
         }
         writeYaml file: 'manifest.yaml', data: Yamldata
