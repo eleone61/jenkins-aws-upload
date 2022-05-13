@@ -35,6 +35,7 @@ node {
            sed -r -e 's/Reading://g' -e '1d;\$d' -e 's/\\s+//g' 'test1.txt' > 'test2.txt'
            """
        sh 'cat test2.txt'
+       sh 'touch test.md5'
 //         sh 'pwd'
 //         def folder = sh script: """
 //                                 zip -sf test.zip | sed '1d;\$d' | sed -r 's/\\s+//g' > file_list.txt
@@ -52,6 +53,7 @@ node {
 //      }
         
         Yamldata.manifest = lines
+        Yamldata.manifest = lines.add('test.md5')
         
     }
     
