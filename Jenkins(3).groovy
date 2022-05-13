@@ -43,6 +43,7 @@ node {
 //         sh 'ls && pwd'
         file = readFile('test2.txt')
         def lines = file.readLines()
+        lines.add('test.md5')
         println (lines[0])
 //         temp = []
 //         for (int i = 0; i < lines.size(); i++) {
@@ -53,7 +54,7 @@ node {
 //      }
         
         Yamldata.manifest = lines
-        Yamldata.manifest = lines.add('test.md5')
+//         Yamldata.manifest = lines.add('test.md5')
         
     }
     
