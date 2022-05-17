@@ -20,7 +20,6 @@ def Yamldata = [
     'Email Recipients' : email_rec
 ]
 
-def triggers = []
 
 
 node {  
