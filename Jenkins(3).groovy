@@ -22,11 +22,6 @@ def Yamldata = [
 
 def triggers = []
 
-if("$BRANCH_NAME" == 'main') {
-    triggers << cron('H H(8-10) * * 1-5') // every 15 minutes
-}
-
-
 
 node {  
     stage('Find DATA') {
