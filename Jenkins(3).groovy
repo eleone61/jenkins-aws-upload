@@ -1,5 +1,6 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
+def email_rec = '${Recipient}'
 
 def Yamldata = [
     'apiVersion': 'v1',
@@ -15,8 +16,16 @@ def Yamldata = [
         'target': 'EKS',
         'style': 'non-intrusive',
         'window': 'asap'
-    ]
+    ],
+    'Email Recipients' : email_rec
 ]
+
+def triggers = []
+
+if("$BRANCH_NAME" == 'main') {
+    triggers << cron('H H(8-10) * * 1-5') // every 15 minutes
+}
+
 
 
 node {  
