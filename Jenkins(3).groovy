@@ -61,7 +61,7 @@ node {
         def Email = sh script: """
                                 echo ${Recipients} | sed 's/ //g'
                                """
-        echo $Email
+        println (Email)
         def emails = Email.tokenize(",")
         println (emails)
         
