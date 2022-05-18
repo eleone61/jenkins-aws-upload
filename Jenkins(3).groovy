@@ -57,7 +57,7 @@ node {
         
         
        Email = sh script: """
-                            echo ${Recipients}|sed 's\ //g'
+                            echo ${Recipients}|sed 's/ //g'
                           """
 
         println (Email)
