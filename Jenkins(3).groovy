@@ -58,7 +58,7 @@ node {
         Yamldata.manifest = lines
 //         Yamldata.manifest = lines.add('test.md5')
         
-        sh """Email=$(echo ${Recipients} | sed "s/ //g")
+        sh """Email=$(echo ${Recipients} | sed 's/ //g')
            """
         echo $Email
         def emails = Email.tokenize(",")
