@@ -56,7 +56,7 @@ node {
         
         email[] Recipients
         email.split(',')
-        Yamldata.email\-list = email
+        Yamldata.email-list = email
         
     }
     
