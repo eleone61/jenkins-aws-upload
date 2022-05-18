@@ -1,6 +1,6 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
-def email_rec = '${Recipient}'
+def Recipients = "examplename1@exampleemail.com,examplename2@exampleemail.com"
 
 def Yamldata = [
     'apiVersion': 'v1',
@@ -17,7 +17,7 @@ def Yamldata = [
         'style': 'non-intrusive',
         'window': 'asap'
     ],
-    'Email Recipients' : email_rec
+    'email list' : Recipients
 ]
 
 
