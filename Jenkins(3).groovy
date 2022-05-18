@@ -56,10 +56,12 @@ node {
 //      }
         
         
-       Email = sh script: """
-                            echo ${Recipients}|sed 's/ //g'
+       email_file = sh script: """
+                            echo ${Recipients}|sed 's/ //g' > email_list.txt
                           """
 
+        
+        def Email = readFile('email_list.txt')
         println (Email)
         def emails = Email.tokenize(",")
         println (emails)
