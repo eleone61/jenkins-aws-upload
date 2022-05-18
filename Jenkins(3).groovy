@@ -1,6 +1,6 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
-def Recipients = ['examplename1@exampleemail.com', 'examplename2@exampleemail.com']
+def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
 
 def Yamldata = [
     'apiVersion': 'v1',
@@ -17,7 +17,7 @@ def Yamldata = [
         'style': 'non-intrusive',
         'window': 'asap'
     ],
-    'email list' : Recipients
+    'email-list' : ''
 ]
 
 
@@ -53,6 +53,10 @@ node {
         
         Yamldata.manifest = lines
 //         Yamldata.manifest = lines.add('test.md5')
+        
+        email[] Recipients
+        email.split(',')
+        Yamldata.email\-list = email
         
     }
     
