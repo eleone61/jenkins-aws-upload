@@ -25,7 +25,6 @@ def Yamldata = [
 node {  
     stage('Find DATA') {
         touch file: 'test1.txt'
-        }
         tee('test1.txt') {
             unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
         }
