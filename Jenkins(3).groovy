@@ -24,7 +24,11 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        touch file: 'test1.txt'
+        if (test1.txt || test2.txt) {
+            sh 'rm test1.txt'
+            sh 'rm test2.txt'
+            sh 'touch test1.txt' 
+        }
         tee('test1.txt') {
             unzip dir: '/var/jenkins_home/workspace/Jenkins Test 5/test', zipFile: 'test.zip', read: true String
         }
@@ -62,7 +66,7 @@ node {
     
         
     stage('Write Yaml') {
-        writeYaml file: 'manifest.yaml', data: Yamldata
+        writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
         sh 'cat manifest.yaml'
 //         def datas = readYaml file: 'manifest.yaml'
 // //         datas.environment = env
