@@ -1,6 +1,6 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
-def Recipients = "examplename1@exampleemail.com,examplename2@exampleemail.com"
+def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
 
 def Yamldata = [
     'apiVersion': 'v1',
@@ -58,9 +58,12 @@ node {
         Yamldata.manifest = lines
 //         Yamldata.manifest = lines.add('test.md5')
         
-        def emails = Recipients.tokenize(",")
+        sh 'Email=$(echo "$Recipients"|sed 's/ //g')'
+        def emails = Email.tokenize(",")
         println (emails)
         
+        
+        Yamldata.manifest = lines
         Yamldata.email = emails
         
     }
