@@ -58,7 +58,7 @@ node {
         Yamldata.manifest = lines
 //         Yamldata.manifest = lines.add('test.md5')
         
-        emails = Recipients.split(',')
+        def emails = Recipients.split(',')
         println (emails)
         
         Yamldata.email = emails
