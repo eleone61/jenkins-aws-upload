@@ -54,8 +54,9 @@ node {
         Yamldata.manifest = lines
 //         Yamldata.manifest = lines.add('test.md5')
         
-        email[] Recipients
-        email.split(',')
+        String email = Recipients
+        String[] email.split(',')
+        
         Yamldata.email = email
         
     }
