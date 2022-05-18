@@ -58,7 +58,7 @@ node {
         Yamldata.manifest = lines
 //         Yamldata.manifest = lines.add('test.md5')
         
-     sh """
+     \sh """
                              Email=$(echo ${Recipients} | sed 's/ //g')
                            """
         println (Email)
