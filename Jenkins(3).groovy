@@ -24,7 +24,7 @@ def Yamldata = [
 
 node {  
     stage('Find DATA') {
-        if (test1.txt || test2.txt) {
+        if ('test1.txt' || 'test2.txt') {
             sh 'rm test1.txt'
             sh 'rm test2.txt'
             sh 'touch test1.txt' 
