@@ -1,6 +1,6 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
-def Recipients = "examplename1@exampleemail.com,examplename2@exampleemail.com"
+def Recipients = ['examplename1@exampleemail.com', 'examplename2@exampleemail.com']
 
 def Yamldata = [
     'apiVersion': 'v1',
