@@ -63,7 +63,7 @@ node {
         
         def Email = readFile('email_list.txt')
         println (Email)
-        def emails = Email.tokenize(",")
+        def emails = Email.tokenize(',')
         println (emails)
         
         
