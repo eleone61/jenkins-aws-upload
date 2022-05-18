@@ -17,7 +17,7 @@ def Yamldata = [
         'style': 'non-intrusive',
         'window': 'asap'
     ],
-    'email-list' : ''
+    'email' : ''
 ]
 
 
@@ -56,7 +56,7 @@ node {
         
         email[] Recipients
         email.split(',')
-        Yamldata.email-list = email
+        Yamldata.email = email
         
     }
     
