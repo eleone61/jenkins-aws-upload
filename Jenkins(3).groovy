@@ -17,7 +17,7 @@ def Yamldata = [
         'style': 'non-intrusive',
         'window': 'asap'
     ],
-    'email' : ''
+    'email' : []
 ]
 
 
