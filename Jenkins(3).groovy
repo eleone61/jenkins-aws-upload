@@ -57,7 +57,7 @@ node {
         
         
        def Email = sh returnStdout: true, script: """
-                                                    echo ${Recipients}|sed 's/ //g' 
+                                                    echo -n ${Recipients}|sed 's/ //g' 
                                                   """
 
         
