@@ -74,7 +74,7 @@ node {
     
         
     stage('Write Yaml') {
-        writeYaml file: 'manifest.yaml', data: Yamldata
+        writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
         sh 'cat manifest.yaml'
 //         def datas = readYaml file: 'manifest.yaml'
 // //         datas.environment = env
