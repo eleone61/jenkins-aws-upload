@@ -61,7 +61,7 @@ node {
 //                                                   """
 
         email_file = sh script: """
-                                     echo -n ${Recipients}|sed 's/ //g' > email_file.txt
+                                     echo ${Recipients}|sed 's/ //g' > email_file.txt
                                  """
         
         
