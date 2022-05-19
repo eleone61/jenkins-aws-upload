@@ -56,16 +56,16 @@ node {
 //      }
         
         
-//        def Email = sh returnStdout: true, script: """
-//                                                     echo -n ${Recipients}|sed 's/ //g' 
-//                                                   """
+       def Email = sh returnStdout: true, script: """
+                                                    echo -n ${Recipients}|sed 's/ //g' 
+                                                  """
 
-        email_file = sh script: """
-                                     echo -n ${Recipients}|sed 's/ //g' > email_file.txt
-                                 """
+//         email_file = sh script: """
+//                                      echo -n ${Recipients}|sed 's/ //g' > email_file.txt
+//                                  """
         
         
-        Email = readFile('email_file.txt')
+//         Email = readFile('email_file.txt')
         println (Email)
         def emails = Email.tokenize(',')
         println (emails)
