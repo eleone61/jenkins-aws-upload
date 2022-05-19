@@ -56,12 +56,12 @@ node {
 //      }
         
         
-       email_file = sh script: """
-                            echo ${Recipients}|sed 's/ //g' > email_list.txt
-                          """
+       def Email = sh returnStdout: true, script: """
+                                                    echo ${Recipients}|sed 's/ //g' 
+                                                  """
 
         
-        def Email = readFile('email_list.txt')
+        
         println (Email)
         def emails = Email.tokenize(',')
         println (emails)
@@ -74,7 +74,7 @@ node {
     
         
     stage('Write Yaml') {
-        writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
+        writeYaml file: 'manifest.yaml', data: Yamldata
         sh 'cat manifest.yaml'
 //         def datas = readYaml file: 'manifest.yaml'
 // //         datas.environment = env
