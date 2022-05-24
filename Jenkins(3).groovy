@@ -107,7 +107,15 @@ node {
                                             triggers {
                                                 scm('H(0-0) 6 * * 1-5')
                                             }
+                                            logRotator {
+                                                daystoKeep(365)
                                             }
+                                            description('Test Build')
+                                            concurrentBuild(false)
+                                            properties {
+                                                 copyArtifactPermission('*')
+                                                 }
+                                          }
                              """
         }
     }
