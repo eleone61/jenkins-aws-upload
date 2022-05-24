@@ -111,9 +111,9 @@ node {
                                                 daysToKeep(365)
                                             }
                                             description('Test Build')
-                                            disableConcurrentBuild(true)
                                             properties {
                                                  copyArtifactPermission('*')
+                                                 disableConcurrentBuild()
                                                  }
                                           }
                              """
