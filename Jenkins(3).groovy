@@ -90,16 +90,25 @@ node {
     stage('DSL') {
         withEnv(["workspace=${params.JobName}"]) {
             echo workspace
-            jobDsl script('''
-                                pipelineJob('$workspace') {
-                                            scm {
-                                                git('https://github.com/eleone61/jenkins-aws-upload.git')
-                                            }
+            jobDsl scriptText: """
+                                pipelineJob('$workspace') { 
+                                    definition {
+                                            cpsScm {
+                                                lightweight(true)
+                                                scm {
+                                                    git{
+                                                        branch('*/main')
+                                                        remote{ url('https://github.com/eleone61/jenkins-aws-upload.git') }
+                                                        }
+                                                     }
+                                                scriptPath('Jenkins(3).groovy')
+                                                    }
+                                                 }
                                             triggers {
                                                 scm('H(0-0) 6 * * 1-5')
                                             }
                                             }
-                             ''')
+                             """
         }
     }
 }
