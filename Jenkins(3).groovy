@@ -90,7 +90,14 @@ node {
     stage('DSL') {
         withEnv(["workspace=${params.JobName}"]) {
             echo workspace
-            jobDsl scriptText: "pipelineJob('$workspace')"
+            jobDsl scriptText: "pipelineJob('$workspace') {
+                                            scm {
+                                                git('https://github.com/eleone61/jenkins-aws-upload.git')
+                                            }
+                                            triggers {
+                                                scm('H(0-0) 6 * * 1-5')
+                                            }
         }
+    }
 }
 }
