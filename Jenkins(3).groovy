@@ -86,4 +86,11 @@ node {
         
         
     }
+    
+    stage('DSL') {
+        withEnv(["workspace=${params.JobName}"]) {
+            echo workspace
+            jobDsl scriptText: "pipelineJob('$workspace')"
+        }
+}
 }
