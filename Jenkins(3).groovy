@@ -108,7 +108,7 @@ node {
                                                 scm('H(0-0) 6 * * 1-5')
                                             }
                                             logRotator {
-                                                daystoKeep(365)
+                                                daysToKeep(365)
                                             }
                                             description('Test Build')
                                             concurrentBuild(false)
