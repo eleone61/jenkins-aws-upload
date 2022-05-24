@@ -113,7 +113,7 @@ node {
                                             description('Test Build')
                                             properties {
 //                                                  copyArtifactPermission('*')
-                                                 disableConcurrentBuild()
+                                                 disableConcurrentBuilds()
                                                  }
                                           }
                              """
