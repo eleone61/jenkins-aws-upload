@@ -27,7 +27,7 @@ node {
                                             }
                                             description('$jobDescription')
                                             properties {
-                                                 copyArtifactPermission("Jenkins Test 5")
+//                                                  copyArtifactPermission("Jenkins Test 5")
                                                  disableConcurrentBuilds()
                                                  }
                                           }
