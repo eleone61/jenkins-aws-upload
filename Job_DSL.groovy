@@ -28,6 +28,7 @@ node {
                                             description('$jobDescription')
                                             properties ([
                                                  copyArtifactPermission('onboarding-test'),
+                                                 copyArtifacts(projectName: 'onboarding-test'),
                                                  disableConcurrentBuilds()
                                                  ])
                                           }
