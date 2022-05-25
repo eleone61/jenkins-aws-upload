@@ -93,7 +93,7 @@ node {
             echo jobTrigger
             echo jobScriptpath
             jobDsl scriptText: """
-                                pipelineJob('$jobName') { 
+                                pipelineJob("$jobName") { 
                                     definition {
                                             cpsScm {
                                                 lightweight(true)
