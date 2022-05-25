@@ -1,3 +1,4 @@
+node {
  stage('DSL') {
         withEnv(["jobName=${params.JobName}", "jobDescription=${params.JobDescription}", "jobTrigger=${params.JobTrigger}", "jobScriptpath=${params.JobScriptPath}"]) {
             echo jobName
@@ -33,3 +34,4 @@
                              """
         }
     }
+}
