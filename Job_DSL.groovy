@@ -26,10 +26,10 @@ node {
                                                 daysToKeep(365)
                                             }
                                             description('$jobDescription')
-                                            properties {
+                                            properties ([
                                                  copyArtifactPermission('*'),
                                                  disableConcurrentBuilds()
-                                                 }
+                                                 ])
                                           }
                              """
         }
