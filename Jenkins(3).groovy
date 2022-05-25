@@ -12,7 +12,6 @@ def Yamldata = [
     'kind': 'deployment',
     'manifest': '',
     'deployment': [ 
-        'type': 'container',
         'target': 'EKS',
         'style': 'non-intrusive',
         'window': 'asap'
@@ -88,10 +87,13 @@ node {
     }
     
     stage('DSL') {
-        withEnv(["workspace=${params.JobName}"]) {
-            echo workspace
+        withEnv(["jobName=${params.JobName}, jobDescription=${params.JobDescription}, jobTrigger=${params.JobTrigger}, jobScriptpath=${params.JobScriptPath}"]) {
+            echo jobName
+            echo jobDescription
+            echo jobTrigger
+            echo jobScriptpath
             jobDsl scriptText: """
-                                pipelineJob('$workspace') { 
+                                pipelineJob('$jobName') { 
                                     definition {
                                             cpsScm {
                                                 lightweight(true)
@@ -101,18 +103,18 @@ node {
                                                         remote{ url('https://github.com/eleone61/jenkins-aws-upload.git') }
                                                         }
                                                      }
-                                                scriptPath('Jenkins(3).groovy')
+                                                scriptPath('$jobScriptpath')
                                                     }
                                                  }
                                             triggers {
-                                                scm('H(0-0) 6 * * 1-5')
+                                                scm('$jobTrigger')
                                             }
                                             logRotator {
                                                 daysToKeep(365)
                                             }
-                                            description('Test Build')
+                                            description('$jobDescription')
                                             properties {
-//                                                  copyArtifactPermission('*')
+                                                 copyArtifactPermission()
                                                  disableConcurrentBuilds()
                                                  }
                                           }
