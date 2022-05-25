@@ -29,7 +29,7 @@ node {
 //                                             
                                             properties {
 //                                                   copyArtifacts(projectName: '*'),
-                                                  copyArtifactPermission("onboarding-test")
+                                                  copyArtifactPermission("onboarding-test");
 //                                                  disableConcurrentBuilds()
                                                  }
                                           }
