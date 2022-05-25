@@ -27,11 +27,12 @@ node {
                                             }
                                             description('$jobDescription')
 //                                             
-                                            properties ([
+                                            properties {
 //                                                   copyArtifacts(projectName: '*'),
-                                                  copyArtifactPermission("onboarding-test");
+                                                 copyArtifactPermissionProperty {
+                                                           projectNames('onboarding-test') }
 //                                                  disableConcurrentBuilds()
-                                                 ])
+                                                 }
                                           }
                              """
         }
