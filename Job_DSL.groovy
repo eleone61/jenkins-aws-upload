@@ -26,9 +26,9 @@ node {
                                                 daysToKeep(365)
                                             }
                                             description('$jobDescription')
+                                            copyArtifactPermission('onboarding-test')
                                             properties ([
-                                                 copyArtifactPermission('onboarding-test'),
-                                                 copyArtifacts(projectName: 'onboarding-test'),
+                                                 copyArtifacts(projectName: '*'),
                                                  disableConcurrentBuilds()
                                                  ])
                                           }
