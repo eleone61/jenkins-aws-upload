@@ -12,8 +12,8 @@ stage('DSL') {
                                                 lightweight(true)
                                                 scm {
                                                     rtc {
-                                                        buildDefinition('fbp-product-app-CICD-DAILY-BD')
-                                                        connection('Build Toolkit 7.0.2','credentials','https://localhost:9443/ccm', 480)
+                                                        buildDefinition('Test-BD')
+                                                        connection('None','Test-Cred','https://localhost:9443/ccm', 480)
                                                         }
                                                     }
                                                 scriptPath('$jobScriptpath')
