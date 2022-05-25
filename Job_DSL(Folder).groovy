@@ -6,7 +6,7 @@ stage('DSL') {
             echo jobTrigger
             echo jobScriptpath
             jobDsl scriptText: """
-                                folder('Test Folder')
+                                folder('Test Folder') {
                                 pipelineJob('$jobName') { 
                                     definition {
                                             cpsScm {
@@ -33,6 +33,7 @@ stage('DSL') {
                                                 disableConcurrentBuilds()
                                                  }
                                           }
+                                         }
                                 """
         }
 }
