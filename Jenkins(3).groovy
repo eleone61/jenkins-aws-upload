@@ -93,7 +93,7 @@ node {
             echo jobTrigger
             echo jobScriptpath
             jobDsl scriptText: """
-                                pipelineJob('test') { 
+                                pipelineJob('$jobName') { 
                                     definition {
                                             cpsScm {
                                                 lightweight(true)
@@ -114,7 +114,7 @@ node {
                                             }
                                             description('$jobDescription')
                                             properties {
-                                                 copyArtifactPermission()
+                                                 copyArtifactPermission('Jenkins Test 5')
                                                  disableConcurrentBuilds()
                                                  }
                                           }
