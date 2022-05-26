@@ -1,126 +1,101 @@
-def apiVersion = 'v1'
-def env = 'dev'
-def version = '1.0.0'
-def buildID = 'xyz'
-def appFamily = 'Test Family'
-def appName = 'Test Application'
-def jar_file = 'application.jar'
-def yaml_file = 'Jenkins.yml'
-def docker = 'dockerfile'
-def MD5 = 'MD5NUM'
-def DEPLOY_TYPE = 'container'
-def DEPLOY_TARGET = 'EKS'
-def DEPLOY_STYLE = 'non-intrusive'
-def DEPLOY_WINDOW = 'asap'
-def ext = '.txt'
-def ext2 = '.yaml'
-def ext3 = '.jar'
+node{
+    stage('start') {
+        echo 'start'
+    }
 
-def createYAML(){
-    sh """
-      cat << EOF > Jenkins.yml 
-       apiVersion: test
-       environment: test
-       version: test
-       appFamily: test
-       appName: test
-       buildID: test
-       kind: deployment
-       manifest:
-        - Test
-        - Test
-        - Test
-        - Test
-       deployment:
-        type: test
-        target: test
-        style: test
-        window: test
-      #Optional Fields
-        healthcheckURI: ":80/irmod/test.html"
-    """
+    def pipelineENV =''
+    while (pipelineENV != 'PREPROD') {
+        pipelineENV = envSelect()
+    }
+
+    approvalGate('PROD')
+    stagePROD()
+
+    stage('Finished') {
+        echo 'finished'
+    }   
 }
 
-def createFolder(){
-    sh """
-            mkdir test-folder
-           
-            touch test-folder/file1.txt
-            touch test-folder/file2.yaml
-            touch test-folder/file3.jar
-            
-            
-           """
+def approvalGate(env) {
+    stage("${env} approval gate"){
+        def req = input message: "Approve to deploy to ${env}", 
+            parameters: [string(description: 'Change request from KISAM', name: 'changeRequest')],
+            id: 'approver'
+        echo req
+    }
+
 }
 
-node {
-  stage('Create YAML') {
-    createYAML() 
-    sh 'cat Jenkins.yml'
-  }
-  stage('Read YAML') {
-    sh 'pwd'
-    sh 'ls'
-    def data = readYaml file: 'Jenkins.yml'
-    return data
-  }
+def envSelect (){
+    stage('environment select') {
+        def req = input message: 'Select an environment',
+        id: 'envResponse',
+        parameters: [choice(name: 'Branch to deploy',
+                    choices: "DEV\nDSIT\nPTE\nPREPROD\nPROD"
+                    )]
 
-  stage('Write Yaml') {
-     def folder = findFiles(glob: 'test-folder/*')
-     echo "finding files: ${folder}"
-    def datas = readYaml file: 'Jenkins.yml'
-    datas.apiVersion = apiVersion
-    datas.environment = env
-    datas.version = version
-    datas.appFamily = appFamily
-    datas.appName = appName
-    datas.buildID = buildID
-    datas.deployment.type = DEPLOY_TYPE
-    datas.deployment.target = DEPLOY_TARGET
-    datas.deployment.style = DEPLOY_STYLE
-    datas.deployment.window = DEPLOY_WINDOW
-    
-//       datas.manifest = [['test-folder/file1.txt', 'test-folder/file2.yaml', 'test-folder/file3.jar'] ] 
-    
-   temp = []
-     for (int i = 0; i < folder.size(); i++) {
-        println folder[i]
-        value = folder[i].toString()
-        temp.add(value) 
-        echo 'step 1'
-     }
-    datas.manifest = temp
-    
-//         for (files in folder[i]) {
-//             if (files.path.endsWith(ext)) {
-//                 datas.manifest[i] = files
-//                 println files
-//             }
-//             else if(files.path.endsWith(ext2)) {
-//                 datas.manifest[i] = files
-//                 println files
-//             }
-//                  else {
-//                 datas.manifest[i] = files
-//                 println files
-//          }
-//        }
-//     } 
+        if (req != 'PROD') {
+            approvalGate(req)
+        }
 
-//  println datas.manifest
-// //       for (i = 0; i < datas.manifest.size(); i++) {
-// //        writeYaml file: 'Jenkins.yml', data: datas.add(datas.manifest[i]), overwrite: true 
-// //       }
-    
-    writeYaml file: 'Jenkins.yml', data: datas, overwrite: true
-    sh 'cat Jenkins.yml'
-  }
-    
-        }   
+        switch(req) {
+            case 'DEV': 
+                stageDEV()
+                break;
+            case 'DSIT': 
+                stageDSIT()
+                break;
+            case 'PTE':
+                stagePTE()
+                break;
+            case 'PREPROD':
+                stagePREPROD()
+                break;
+            case 'PROD':
+                prodError()
+                break;
+            
+        }
+        return req
+}
 
-// def folder = new File('jenkins-aws-upload/Test Folder')
-//         folder.eachFileecurse FileType.FILES,   { file ->
-//             if(!file.name.endsWith(".txt")) {
-//                 println "Listing Files ${file.absolutePath}"
+def stageDEV (){
+    stage('deploying to DEV'){
+        echo 'DEV'
+    }
+}
 
+def stageDSIT (){
+    stage('deploying to DSIT'){
+        echo 'DSIT'
+    }
+}
+
+def stagePTE (){
+    stage('deploying to PTE'){
+        echo 'PTE'
+    }
+}
+
+def stagePREPROD (){
+    stage('deploying to PREPROD') {
+        echo 'PREPROD'
+    }
+}
+
+def prodError() {
+    stage('Attempted to go to PROD, need to go to PREPROD first') {
+        catchError(stageResult: 'FAILURE') {
+            sh "exit 1"
+        }
+        echo 'must go to pre-prod first'
+        echo 'go to PREPROD first'
+    }
+}
+
+def stagePROD (){
+    stage('deploying to PROD') {
+        echo 'PROD'
+    }
+}
 
