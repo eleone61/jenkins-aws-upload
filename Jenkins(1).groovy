@@ -58,6 +58,7 @@ def envSelect (){
         }
         return req
 }
+}
 
 def stageDEV (){
     stage('deploying to DEV'){
@@ -98,4 +99,4 @@ def stagePROD (){
         echo 'PROD'
     }
 }
-}
+
