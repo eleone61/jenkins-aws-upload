@@ -7,7 +7,7 @@ stage('DSL') {
             echo jobScriptpath
             jobDsl scriptText: """
                                 folder('Test Folder') {
-                                pipelineJob('$jobName') { 
+                                pipelineJob('Test Folder/$jobName') { 
                                     definition {
                                             cpsScm {
                                               lightweight(true)
