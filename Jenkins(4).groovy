@@ -67,6 +67,9 @@ node {
         tee('test3.txt') {
             sh 'sha256sum shatest.txt'
         }
-        sh 'cat test3.txt'
+        sh """
+            sed -r -e '1d' -e 's/shatest.txt//g' 'test3.txt' > 'test4.txt'
+            cat test4.txt
+           """
     }
 }
