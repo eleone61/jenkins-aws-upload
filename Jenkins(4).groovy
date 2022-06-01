@@ -65,7 +65,7 @@ node {
     
     stage('SHA-256 Test') {
         tee('test3.txt') {
-            sha256 'shatest.txt'
+            sha256sum = sh(returnStdout: true, script: "sha256sum 'shatest.txt'")
         }
         sh 'cat test3.txt'
     }
