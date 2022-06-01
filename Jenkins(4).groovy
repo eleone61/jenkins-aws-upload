@@ -64,9 +64,9 @@ node {
     }
     
     stage('SHA-256 Test') {
-        tee('test1.txt') {
+        tee('test3.txt') {
             def hash = sha256 file: 'shatest.txt'
         }
-        sh 'cat test1.txt'
+        sh 'cat test3.txt'
     }
 }
