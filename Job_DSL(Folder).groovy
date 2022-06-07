@@ -1,13 +1,14 @@
 node {
 stage('DSL') {
-        withEnv(["jobName=${params.JobName}", "jobDescription=${params.JobDescription}", "jobTrigger=${params.JobTrigger}", "jobScriptpath=${params.JobScriptPath}"]) {
+        withEnv(["jobName=${params.JobName}", "jobDescription=${params.JobDescription}", "jobTrigger=${params.JobTrigger}", "jobScriptpath=${params.JobScriptPath}", "jobFolder=${params.JobFolder}"]) {
             echo jobName
             echo jobDescription
             echo jobTrigger
             echo jobScriptpath
+            echo jobFolder
             jobDsl scriptText: """
-                                folder('Test Folder') {
-                                pipelineJob('Test Folder/$jobName') { 
+                                folder('$jobFolder') {
+                                pipelineJob('$jobFolder/$jobName') { 
                                     definition {
                                             cpsScm {
                                               lightweight(true)
