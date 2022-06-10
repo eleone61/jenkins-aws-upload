@@ -8,11 +8,12 @@ def skipStageE = 'true'
 def failPipeline() {
    stage('Must Complete Testing') {
        script {
-           error "Pipeline failed - No testing complete"
+           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "exit 1"
+        }
        }
    }
 }
-
 def Yamldata = [
     'apiVersion': 'v1',
     'environment': env,
