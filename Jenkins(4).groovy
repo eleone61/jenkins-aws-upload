@@ -1,6 +1,17 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
 def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
+def skipStageC = 'true'
+def skipStageD = 'true'
+def skipStageE = 'true'
+
+def failPipeline() {
+   stage('Must Complete Testing') {
+       script {
+           error "Pipeline failed - No testing complete"
+       }
+   }
+}
 
 def Yamldata = [
     'apiVersion': 'v1',
@@ -56,6 +67,12 @@ node {
         
     }
     
+    stage('Check Test') {
+        if (skipStageC == 'true' || skipStageD == 'true' || skipStageE == 'true') {
+                failPipeline()
+        }
+    }
+        
         
     stage('Write Yaml') {
         writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
