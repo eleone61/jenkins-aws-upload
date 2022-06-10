@@ -1,9 +1,9 @@
 def env = '$(env)'
 def buildID = '$(buildID)'
 def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
-def skipStageC = 'true'
+def skipStageC = 'false'
 def skipStageD = 'false'
-def skipStageE = 'true'
+def skipStageE = 'false'
 
 def failPipeline() {
    stage('Must Complete Testing') {
