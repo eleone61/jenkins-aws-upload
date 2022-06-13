@@ -1,7 +1,7 @@
 def env = 'dev'
 def buildID = '001'
 def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
-def envTestList = ["a","b","c","d"]
+def envTestList = [a,b,c,d]
 
 node{
     stage('start') {
