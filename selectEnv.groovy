@@ -1,11 +1,7 @@
 def env = 'dev'
 def buildID = '001'
 def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
-def envTestList = [
-    'a',
-    'b',
-    'c',
-    'd']
+List<String> envTestList = []
 
 node{
     stage('start') {
@@ -98,10 +94,11 @@ def approvalGate(env) {
 
 def envSelect (){
     stage('environment select') {
+        envTestList = ["a", "b", "c"]
         def req = input message: 'Select an environment',
         id: 'envResponse',
         parameters: [choice(name: 'Branch to deploy',
-                            choices: "${envTestList}"
+                            choices: envTestList
                     )]
 
         if (req != 'PROD') {
