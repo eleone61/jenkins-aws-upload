@@ -97,7 +97,7 @@ def envSelect (){
         def req = input message: 'Select an environment',
         id: 'envResponse',
         parameters: [choice(name: 'Branch to deploy',
-                            choices: ${envTestList}
+                            choices: envTestList
                     )]
 
         if (req != 'PROD') {
