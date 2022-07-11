@@ -60,6 +60,7 @@ node{
             echo "Skip Stage Promotion"
         }
     }
+}
 
 
 
@@ -204,5 +205,5 @@ def stagePROD (){
         echo 'PROD'
     }
 }
-}
+
 
