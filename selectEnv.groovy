@@ -5,7 +5,7 @@ def skipStageA = "false"
 def skipStageB = "false"
 stageA = "true"
 stageB = "true"
-skipStagePromotion = "true"
+promotionalSteps = "true"
 List<String> envTestList = []
 
 if (skipStageA == "true")
@@ -17,7 +17,7 @@ if (skipStageA == "true")
 if (skipStageB == "true")
 {
     stageB = false
-    skipStagePromotion = "true"
+    promotionalSteps = false
 }
 
 node{
@@ -41,7 +41,7 @@ node{
         }
     }
     stage('Promotion'){
-        if (skipStagePromotion == false){
+        if (promotionalSteps != false){
 
     def pipelineENV =''
     def goPROD = 'false'
