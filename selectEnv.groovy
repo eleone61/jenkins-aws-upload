@@ -1,13 +1,46 @@
 def env = 'dev'
 def buildID = '001'
 def Recipients = "examplename1@exampleemail.com, examplename2@exampleemail.com"
+def skipStageA = "false"
+def skipStageB = "false"
+stageA = "true"
+stageB = "true"
 List<String> envTestList = []
+
+if (skipStageA == "true")
+{
+    stageA = false
+    skipStageB = "true"
+}
+
+if (skipStageB == "true")
+{
+    stageB = false
+    skipStagePromotion = "true"
+}
 
 node{
     stage('start') {
         echo 'start'
         createManifest('dev',BUILD_ID,"ABCD","abcd",Recipients)
     }
+    
+    stage('Test Stage A') {
+        if (stageA != true) {
+            echo "Stage A"
+        } else {
+            echo "Skipped"
+        }
+    }
+    stage('Test Stage B') {
+        if (stageB != true) {
+            echo "Stage B"
+        } else {
+            echo "Skipped"
+        }
+    }
+    stage('Promotion'){
+        if (skipStagePromotion == false){
 
     def pipelineENV =''
     def goPROD = 'false'
@@ -23,6 +56,10 @@ node{
         echo 'finished'
     }   
 }
+        else{
+            echo "Skip Stage Promotion"
+        }
+    }
 
 
 
