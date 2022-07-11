@@ -5,6 +5,7 @@ def skipStageA = "false"
 def skipStageB = "false"
 stageA = "true"
 stageB = "true"
+skipStagePromotion = "true"
 List<String> envTestList = []
 
 if (skipStageA == "true")
