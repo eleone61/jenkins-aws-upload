@@ -47,7 +47,7 @@ node{
     def goPROD = 'false'
     while (pipelineENV != 'PROD' && goPROD != 'true') {
         pipelineENV = envSelect()
-        updateManifest(pipelineENV)
+        updateManifest(pipelineENV.environment,pipelineENV.changeRequest)
     }
 
     approvalGate('PROD')
@@ -117,11 +117,11 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
         writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
 }
 
-def updateManifest(pipelineENV) {
+def updateManifest(env,cR) {
 	def file = readYaml file: "manifest.yaml"
 	
-	file['environment'] = pipelineENV[environment].toLowerCase()
-	file.add(pipelineENV[changeRequest])
+	file['environment'] = environment.toLowerCase()
+	file.add(cR)
 	
 	if("${env.JOB_NAME}".endsWith(".Test")){
 		file['kind'] = "Artifact Deployment"
