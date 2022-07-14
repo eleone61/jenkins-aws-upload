@@ -118,7 +118,27 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
 }
 
 def updateManifest(pipelineENV) {
+    def file = readYaml file: "manifest.yaml"
 
+           
+	       file['environment'] = pipelineEnv.toLowerCase()
+
+            if("${env.JOB_NAME}".endsWith(".Deploy")){
+                file['kind'] = "Artifact Deployment"
+            }else {
+                file['kind'] = "Promotion"
+            }
+
+	       
+	       sh """
+	              if [ -f manifest.yaml ] ; then
+	                      rm -f manifest.yaml
+	              fi
+	       """
+	       
+	       writeYaml file: 'manifest.yaml', data: file, overwrite: true
+	       
+	       sh 'cat manifest.yaml'
 }
 
 def approvalGate(env) {
