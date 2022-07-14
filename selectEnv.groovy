@@ -121,7 +121,11 @@ def updateManifest(env,cR) {
 	def file = readYaml file: "manifest.yaml"
 	
 	file['environment'] = env.toLowerCase()
-	file.add(cR)
+	
+	def changeRequest = sh returnStdout: true, script: """
+								echo -n $(cR)
+							    """
+	file.add(changeRequest)
 	
 	if("${env.JOB_NAME}".endsWith(".Test")){
 		file['kind'] = "Artifact Deployment"
