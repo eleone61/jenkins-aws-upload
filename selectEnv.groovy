@@ -152,43 +152,39 @@ def approvalGate(env) {
 }
 
 def envSelect (){
-    stage('environment select') {
-         envTestList = ["DSIT","SITE","PTE","EITE","END"]
-
-         def req = ""
-
-         timeout(time:1, unit:'DAYS') {
-		     req = input message: "Select an environment to deploy Artifa", 
-			     id: 'envResponse',
-			    parameters: [string(description: 'Change Request number from KISAM', name: 'changeRequest'),
-					choice(name: 'environment',
-					      choices: envTestList)]
-		     println(req)
-	      }
-	  if (req.environment == 'END') {
-		  return req
-		  break;
-	  }
-	  
-    if (req.environment != 'PROD') {
-     //iepDeploymentApproval(req, ApprovalGroup, ApprovalEmailList, ArtifactName, buildRel)
-      while ( req.changeRequest == "" ) {
-		    req = input message: "Select an environment to deploy Artifact?",
-			   id: 'DeployPackage',
-			   parameters: [string(description: 'Missing KISAM change request number', name: 'changeRequest'),
-				      choice(name: 'environment',
-				      choices: envTestList)],
-	     println(req)
-	     if (req.environment == 'END') {
-		    return req
-		    break;
-	     }
-      }
-     }
-    }
-}
-
-              
+	stage('environment select') {
+		envTestList = ["DSIT","SITE","PTE","EITE","END"]
+		
+		def req = ""
+		
+		timeout(time:1, unit:'DAYS') {
+			req = input message: "Select an environment to deploy Artifact?",
+				id: 'envResponse',
+			    	parameters: [string(description: 'Change Request number from KISAM', name: 'changeRequest'),
+					     choice(name: 'environment',
+						    choices: envTestList)]
+			println(req)
+		}
+		
+		if (req.environment == 'END') {
+			return req
+			break;
+		}
+		
+		if (req.environment != 'PROD') {
+			while ( req.changeRequest == "" ) {
+				req = input message: "Select an environment to deploy Artifact?",
+			   		id: 'DeployPackage',
+			   		parameters: [string(description: 'Missing KISAM change request number', name: 'changeRequest'),
+						     choice(name: 'environment',
+				      			    choices: envTestList)]
+				println(req)
+				if (req.environtment == 'END') {
+					return req
+					break;
+				}
+			}
+		}
 
 
         if (req != 'PROD') {
