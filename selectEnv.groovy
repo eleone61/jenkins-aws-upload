@@ -123,7 +123,7 @@ def updateManifest(env,cR) {
 	file['environment'] = env.toLowerCase()
 	
 	def changeRequest = sh returnStdout: true, script: """
-								echo -n $(cR)
+								echo -n ${cR}
 							    """
 	file.add(changeRequest)
 	
