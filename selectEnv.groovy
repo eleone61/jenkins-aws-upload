@@ -47,7 +47,7 @@ node{
     def goPROD = 'false'
     while (pipelineENV != 'PROD' && goPROD != 'true') {
         pipelineENV = envSelect()
-        updateManifest(pipelineENV)
+        updateManifest(pipelineENV.environment)
     }
 
     approvalGate('PROD')
