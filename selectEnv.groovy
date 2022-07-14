@@ -43,7 +43,7 @@ node{
     stage('Promotion'){
         if (promotionalSteps != false){
 
-    def pipelineENV =''
+    def pipelineENV =""
     def goPROD = 'false'
     while (pipelineENV != 'PROD' && goPROD != 'true') {
         pipelineENV = envSelect()
@@ -123,7 +123,7 @@ def updateManifest(pipelineENV) {
            
 	       file['environment'] = pipelineEnv.toLowerCase()
 
-            if("${env.JOB_NAME}".endsWith(".Deploy")){
+            if("${env.JOB_NAME}".endsWith(".Test")){
                 file['kind'] = "Artifact Deployment"
             }else {
                 file['kind'] = "Promotion"
@@ -141,12 +141,9 @@ def updateManifest(pipelineENV) {
 	       sh 'cat manifest.yaml'
 }
 
-def approvalGate(env) {
-    stage("${env} approval gate"){
-        def req = input message: "Approve to deploy to ${env}", 
-            parameters: [string(description: 'Change request from KISAM', name: 'changeRequest')],
-            id: 'approver'
-        echo req
+def environmentalTesting(env) {
+    stage("${env} Environmental Testing"){
+        echo "$env Environmental Testing"
     }
 
 }
@@ -188,7 +185,7 @@ def envSelect (){
 
 
         if (req != 'PROD') {
-            approvalGate(req)
+            environmentalTesting(req.environment)
         }
 
         switch(req) {
