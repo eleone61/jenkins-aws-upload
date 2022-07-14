@@ -170,7 +170,7 @@ def envSelect (){
 		  break;
 	  }
 	  
-	if (req.environment != 'PROD') {
+    if (req.environment != 'PROD') {
      //iepDeploymentApproval(req, ApprovalGroup, ApprovalEmailList, ArtifactName, buildRel)
       while ( req.changeRequest == "" ) {
 		    req = input message: "Select an environment to deploy Artifact?",
@@ -182,8 +182,10 @@ def envSelect (){
 	     if (req.environment == 'END') {
 		    return req
 		    break;
-		    }
 	     }
+      }
+     }
+    }
 }
 
               
