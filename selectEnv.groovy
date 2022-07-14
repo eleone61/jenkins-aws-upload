@@ -118,27 +118,25 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
 }
 
 def updateManifest(pipelineENV) {
-    def file = readYaml file: "manifest.yaml"
-
-           
-	       file['environment'] = pipelineENV.toLowerCase()
-
-            if("${env.JOB_NAME}".endsWith(".Test")){
-                file['kind'] = "Artifact Deployment"
-            }else {
-                file['kind'] = "Promotion"
-            }
-
+	def file = readYaml file: "manifest.yaml"
+	
+	file['environment'] = pipelineENV.toLowerCase()
+	file.add(pipelineENV.changeRequest)
+	
+	if("${env.JOB_NAME}".endsWith(".Test")){
+		file['kind'] = "Artifact Deployment"
+	}else {
+		file['kind'] = "Promotions"
+	}
+	
+	sh """
+	      if [ -f manifest.yaml ] ; then
+		      rm -f manifest.yaml
+	      fi
+       	    """
+	 writeYaml file: 'manifest.yaml', data: file, overwrite: true
 	       
-	       sh """
-	              if [ -f manifest.yaml ] ; then
-	                      rm -f manifest.yaml
-	              fi
-	       """
-	       
-	       writeYaml file: 'manifest.yaml', data: file, overwrite: true
-	       
-	       sh 'cat manifest.yaml'
+         sh 'cat manifest.yaml'
 }
 
 def environmentalTesting(env) {
