@@ -120,7 +120,7 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
 def updateManifest(env,cR) {
 	def file = readYaml file: "manifest.yaml"
 	
-	file['environment'] = environment.toLowerCase()
+	file['environment'] = env.toLowerCase()
 	file.add(cR)
 	
 	if("${env.JOB_NAME}".endsWith(".Test")){
