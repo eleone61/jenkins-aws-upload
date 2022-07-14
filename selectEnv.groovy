@@ -121,7 +121,7 @@ def updateManifest(pipelineENV) {
     def file = readYaml file: "manifest.yaml"
 
            
-	       file['environment'] = pipelineEnv.toLowerCase()
+	       file['environment'] = pipelineENV.toLowerCase()
 
             if("${env.JOB_NAME}".endsWith(".Test")){
                 file['kind'] = "Artifact Deployment"
