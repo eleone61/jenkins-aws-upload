@@ -42,10 +42,10 @@ node{
     }
     stage('Promotion'){
         if (promotionalSteps != false){
-    def pipelineENV = {
+    def pipelineENV = [
 	    "environment": "",
 	    "changeRequest": ""
-    }
+    ]
     def goPROD = 'false'
     while (pipelineENV != 'PROD' && goPROD != 'true') {
         pipelineENV = envSelect()
