@@ -127,7 +127,7 @@ def updateManifest(pipelineENV) {
 	def changeRequest = sh returnStdout: true, script: """
 								echo -n ${pipelineENV["changeRequest"]}
 							    """
-	file.add(changeRequest)
+	file.addAll("Change Request :" changeRequest)
 	
 	if("${env.JOB_NAME}".endsWith(".Test")){
 		file['kind'] = "Artifact Deployment"
