@@ -124,7 +124,7 @@ def updateManifest(pipelineENV) {
 	
 	file['environment'] = pipelineENV["environment"].toLowerCase()
 	
-	def changeRequest = pipelineENV["changeRequest"].join(",")
+	def changeRequest = pipelineENV["changeRequest"].join()
 	file.add('Change Request :' + changeRequest)
 	
 	if("${env.JOB_NAME}".endsWith(".Test")){
