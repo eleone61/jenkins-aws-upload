@@ -42,12 +42,14 @@ node{
     }
     stage('Promotion'){
         if (promotionalSteps != false){
-
-    def pipelineENV =""
+    def pipelineENV = {
+	    "environment": "",
+	    "changeRequest": ""
+    }
     def goPROD = 'false'
     while (pipelineENV != 'PROD' && goPROD != 'true') {
         pipelineENV = envSelect()
-        updateManifest(pipelineENV.environment,pipelineENV.changeRequest)
+        updateManifest(pipelineENV)
     }
 
     approvalGate('PROD')
@@ -117,13 +119,13 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
         writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
 }
 
-def updateManifest(env,cR) {
+def updateManifest(pipelineENV) {
 	def file = readYaml file: "manifest.yaml"
 	
 	file['environment'] = env.toLowerCase()
 	
 	def changeRequest = sh returnStdout: true, script: """
-								echo -n ${cR}
+								echo -n ${pipelineENV["changeRequest"]}
 							    """
 	file.add(changeRequest)
 	
