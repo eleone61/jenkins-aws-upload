@@ -122,7 +122,7 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
 def updateManifest(pipelineENV) {
 	def file = readYaml file: "manifest.yaml"
 	
-	file['environment'] = env.toLowerCase()
+	file['environment'] = pipelineENV["environment"].toLowerCase()
 	
 	def changeRequest = sh returnStdout: true, script: """
 								echo -n ${pipelineENV["changeRequest"]}
