@@ -127,7 +127,7 @@ def updateManifest(pipelineENV) {
 	file['environment'] = pipelineENV["environment"].toLowerCase()
 	
 	def changeRequest = pipelineENV["changeRequest"].toString()
-	file.add(changeRequest)
+	file["changeRequest"] = pipelineENV["changeRequest"]
 	
 	if("${env.JOB_NAME}".endsWith(".Test")){
 		file['kind'] = "Artifact Deployment"
