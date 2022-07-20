@@ -7,7 +7,7 @@ def approver="LDHVB"
 def crNumber="1234"
 def home = "Home"
 
-def fileName= "${env.JENKINS_HOME}" + "/logs/" + name + "deployment_log.txt"
+def fileName= "/var/logs/deployment_log.txt"
 def dashboardFileName = "${env.JENKINS_HOME}" + "/logs/ecm_deployment_log.txt"
 
 
