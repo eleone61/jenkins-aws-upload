@@ -14,7 +14,7 @@ def dashboardFileName = "/home/jenkins/workspace/Jenkins \ttest \t2/log/ecm_depl
 sh """
       set +x
       echo "DeployDate: $date \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
-      cp $fileName deployment.log
+      cp -R $fileName deployment.log
       echo \$(date "+%a %d %b %Y %T %p") "\t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $dashboardFileName
    """
       
