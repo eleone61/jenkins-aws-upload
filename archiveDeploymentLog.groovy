@@ -17,5 +17,6 @@ sh """
       cp -R $fileName deployment.log
       echo \$(date "+%a %d %b %Y %T %p") "\t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $dashboardFileName
    """
-      
+
+ archiveArtifacts artifacts: 'deployment.log', fingerprint: true
 }
