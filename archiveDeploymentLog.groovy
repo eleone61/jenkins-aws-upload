@@ -1,3 +1,4 @@
+node {
 def date="72022"
 def name="Elijah"
 def appVersion="1.0"
@@ -16,3 +17,5 @@ sh """
       cp $fileName test1.txt
       echo \$(date "+%a %d %b %Y %T %p") "\t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $dashboardFileName
    """
+      
+}
