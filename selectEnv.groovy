@@ -50,14 +50,6 @@ node{
 		    while (pipelineENV != 'PROD' && goPROD != 'true') {
 			pipelineENV = envSelect()
 			updateManifest(pipelineENV)
-			    if (pipelineENV["environment"] == 'END') {
-				    stage('Must Complete Testing') {
-       						script {
-           						catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-								sh "exit 1" }
-						}
-				    }
-			    }
 		    }
 	}
 			else{
