@@ -64,6 +64,9 @@ node{
 			    echo "Skip Stage Promotion"
 			}
     }
+	if (pipelineENV["environment"] == 'END') {
+		break;
+	}
 }
 
 
