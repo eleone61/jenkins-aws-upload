@@ -54,19 +54,17 @@ node{
 				    stage('Must Complete Testing') {
        						script {
            						catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            						sh "exit 1" 
-							}
+								sh "exit 1" }
 						}
 				    }
 			    }
-		    stagePROD() 
 		    }
-			}
+	}
 			else{
 			    echo "Skip Stage Promotion"
 			}
-		    }
-	}
+    }
+}
 
 
 
