@@ -50,15 +50,15 @@ node{
 		    while (pipelineENV != 'PROD' && goPROD != 'true') {
 			pipelineENV = envSelect()
 			updateManifest(pipelineENV)
+			if (pipelineENV["environment"] == 'END') {
+				break;
+			}
 		    }
 	}
 			else{
 			    echo "Skip Stage Promotion"
 			}
     }
-	if (pipelineENV["environment"] == 'END') {
-		break;
-	}
 }
 
 
