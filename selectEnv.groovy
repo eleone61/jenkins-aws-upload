@@ -50,14 +50,15 @@ node{
     while (pipelineENV != 'PROD' && goPROD != 'true') {
         pipelineENV = envSelect()
         updateManifest(pipelineENV)
+	    if (pipelineENV["environment"] == 'END') {
+		    stage('Finished') {
+			    echo 'Finished'
+			    break;
+		    }
     }
 
     approvalGate('PROD')
-    stagePROD()
-
-    stage('Finished') {
-        echo 'finished'
-    }   
+    stagePROD() 
 }
         else{
             echo "Skip Stage Promotion"
