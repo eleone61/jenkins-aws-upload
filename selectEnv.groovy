@@ -42,29 +42,29 @@ node{
     }
     stage('Promotion'){
         if (promotionalSteps != false){
-    def pipelineENV = [
-	    "environment": "",
-	    "changeRequest": ""
-    ]
-    def goPROD = 'false'
-    while (pipelineENV != 'PROD' && goPROD != 'true') {
-        pipelineENV = envSelect()
-        updateManifest(pipelineENV)
-	    if (pipelineENV["environment"] == 'END') {
-		    stage('Finished') {
-			    echo 'Finished'
-			    break;
+		    def pipelineENV = [
+			    "environment": "",
+			    "changeRequest": ""
+		    ]
+		    def goPROD = 'false'
+		    while (pipelineENV != 'PROD' && goPROD != 'true') {
+			pipelineENV = envSelect()
+			updateManifest(pipelineENV)
+			    if (pipelineENV["environment"] == 'END') {
+				    stage('Finished') {
+					    echo 'Finished'
+					    break;
+				    }
+			    }
+		    approvalGate('PROD')
+		    stagePROD() 
 		    }
-    }
-
-    approvalGate('PROD')
-    stagePROD() 
-}
-        else{
-            echo "Skip Stage Promotion"
-        }
-    }
-}
+			}
+			else{
+			    echo "Skip Stage Promotion"
+			}
+		    }
+	}
 
 
 
