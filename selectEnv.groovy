@@ -117,6 +117,7 @@ def createManifest(env,buildID,ProgramName,ProjectName,Recipients) {
         Yamldata.manifest = lines
         Yamldata.email = emails
         writeYaml file: 'manifest.yaml', data: Yamldata, overwrite: true
+	archiveArtifacts artifacts: 'manifest.yaml' fingerprints: true
 }
 
 def updateManifest(pipelineENV) {
@@ -143,6 +144,7 @@ def updateManifest(pipelineENV) {
 	 writeYaml file: 'manifest.yaml', data: file, overwrite: true
 	       
          sh 'cat manifest.yaml'
+	archiveArtifacts artifacts: 'manifest.yaml' fingerprints: true
 }
 
 def environmentalTesting(env) {
