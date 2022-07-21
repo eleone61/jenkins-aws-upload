@@ -56,7 +56,6 @@ node{
 					    break;
 				    }
 			    }
-		    approvalGate('PROD')
 		    stagePROD() 
 		    }
 			}
