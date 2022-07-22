@@ -33,6 +33,9 @@ sh """
      # echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
       
       sed '1 a\\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
+      cat $fileName
+      echo "\n"
+      cat 'deployment.log'
    """
 
  archiveArtifacts artifacts: 'deployment.log', fingerprint: true
