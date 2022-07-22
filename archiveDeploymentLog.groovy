@@ -1,7 +1,7 @@
 // def archiveIEPDeploymentLog(ProjectName, , targetEnv, ApproverID, pipelineEnv["changeRequest"], timestamp)
 
 // def call(Name, appVersion, targetEnv, approvers, crNumber, time)
-def exist = fileExist 'deployment_log.txt'
+def exist = fileExists 'deployment_log.txt'
 
 if (exist == 'false') {
       sh 'echo "DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:" >> "deployment_log.txt"'
