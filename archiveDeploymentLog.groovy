@@ -35,7 +35,6 @@ sh """
       sed '1 a\\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
       cat $fileName
       echo "\n"
-      cat 'deployment.log'
    """
 
  archiveArtifacts artifacts: fileName, fingerprint: true
