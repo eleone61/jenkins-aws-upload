@@ -13,14 +13,19 @@ def home = "Home"
 
 def fileName= "/home/jenkins/workspace/log/deployment_log.txt"
 def dashboardFileName = "/home/jenkins/workspace/log/ecm_deployment_log.txt"
-
+def time = timestamp()
 
 sh """
       set +x
-      echo "DeployDate: $date \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
+      echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
       cp -R $fileName deployment.log
-      echo \$(date "+%a %d %b %Y %T %p") "\t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $dashboardFileName
+      echo \$(time "+%a %d %b %Y %T %p") "\t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $dashboardFileName
    """
 
  archiveArtifacts artifacts: 'deployment.log', fingerprint: true
+}
+
+def timestamp () {
+    def now = new Date()
+    return now.format("E MMM dd HH:mm:ss z yyy", TimeZone.getTimeZone("America/New_York"))
 }
