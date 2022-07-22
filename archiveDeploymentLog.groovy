@@ -1,6 +1,8 @@
 // def archiveIEPDeploymentLog(ProjectName, , targetEnv, ApproverID, pipelineEnv["changeRequest"], timestamp)
 
 // def call(Name, appVersion, targetEnv, approvers, crNumber, time)
+node {
+
 def exist = fileExists 'deployment_log.txt'
 
 if (exist == 'false') {
@@ -9,7 +11,6 @@ if (exist == 'false') {
 }
 
 
-node {
 def date="72022"
 def name="Elijah"
 def appVersion="1.0"
