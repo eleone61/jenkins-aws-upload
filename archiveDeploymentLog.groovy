@@ -36,7 +36,7 @@ sh """
       echo "\n"
    """
 
-  archiveArtifacts artifacts: "${fileName}", fingerprint: true
+  archiveArtifacts artifacts: "/home/jenkins/workspace/log/deployment.log", fingerprint: true
 }
 
 def timestamp () {
