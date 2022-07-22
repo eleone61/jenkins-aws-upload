@@ -17,7 +17,7 @@ def time = timestamp()
 
   def exist = fileExists "${fileName}"
 
-if (exist != 'true') {
+if (exist != true) {
       sh """
             echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:' > $fileName
             echo 'file Does not exist, Creating'
