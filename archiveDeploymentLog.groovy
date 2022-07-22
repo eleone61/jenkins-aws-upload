@@ -7,7 +7,7 @@ def exist = fileExists 'deployment_log.txt'
 
 if (exist != 'true') {
       sh """
-            echo "DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:" > "deployment_log.txt"'
+            echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:' > deployment_log.txt
             echo 'file Does not exist, Creating'
          """
 }
