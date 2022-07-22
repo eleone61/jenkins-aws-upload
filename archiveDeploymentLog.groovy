@@ -1,6 +1,10 @@
 // def archiveIEPDeploymentLog(ProjectName, , targetEnv, ApproverID, pipelineEnv["changeRequest"], timestamp)
 
 // def call(Name, appVersion, targetEnv, approvers, crNumber, time)
+if (!(deployment_log.txt)) {
+      sh 'echo "DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:" > deployment_log.txt'
+}
+
 
 node {
 def date="72022"
