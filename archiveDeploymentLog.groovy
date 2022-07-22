@@ -37,7 +37,7 @@ sh """
       echo "\n"
    """
 
- archiveArtifacts artifacts: fileName, fingerprint: true
+  archiveArtifacts artifacts: "${fileName}", fingerprint: true
 }
 
 def timestamp () {
