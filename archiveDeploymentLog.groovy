@@ -32,7 +32,7 @@ sh """
 #      echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
 #      echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
       
-      sed -i '\$i\\ ${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
+      sed -i '\$a\\ ${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
       cat ${fileName}
    """
 
