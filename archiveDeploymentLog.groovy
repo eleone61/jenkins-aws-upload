@@ -19,7 +19,7 @@ def exist = fileExists "${fileName}"
 
 if (exist != true) {
     sh """
-         echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR: \tBUILDID' > $fileName
+         echo 'DeployDate: \t\tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR: \tBUILDID' > $fileName
          echo 'file Does not exist, Creating'
        """
 }
