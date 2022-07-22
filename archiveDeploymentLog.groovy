@@ -2,18 +2,7 @@
 
 // def call(Name, appVersion, targetEnv, approvers, crNumber, time)
 node {
-
-def exist = fileExists 'deployment_log.txt'
-
-if (exist != 'true') {
-      sh """
-            echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:' > deployment_log.txt
-            echo 'file Does not exist, Creating'
-         """
-}
-
-println(exist)
-      
+  
 def date="72022"
 def name="Elijah"
 def appVersion="1.0"
@@ -22,15 +11,28 @@ def approver="LDHVB"
 def crNumber="1234"
 def home = "Home"
 
-def fileName= "/home/jenkins/workspace/log/deployment_log.txt"
-def dashboardFileName = "/home/jenkins/workspace/log/ecm_deployment_log.txt"
+def fileName= "/home/jenkins/workspace/log/deployment.log" 
+def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
 
+def exist = fileExists 'deployment.log'
+
+if (exist != 'true') {
+      sh """
+            echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:' > $fileName
+            echo 'file Does not exist, Creating'
+         """
+}
+
+println(exist)      
+      
+      
 sh """
       set +x
-      echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
-      cp -R $fileName deployment.log
-      echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $dashboardFileName
+  #   echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
+     # echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
+      
+      sed '1 a\\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
    """
 
  archiveArtifacts artifacts: 'deployment.log', fingerprint: true
