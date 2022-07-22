@@ -29,7 +29,7 @@ println(exist)
       
 sh """
       set +x
-      sed -i '1a\\${time} \t${name}  \t${appVersion}  \t\t${targetEnv}  \t${approver}  \t${crNumber}  \t${env.BUILD_TAG}' $fileName
+      sed -i '1a\\${time} \t${name}  \t${appVersion}  \t\t${targetEnv}  \t\t${approver}  \t\t${crNumber}  \t\t${env.BUILD_TAG}' $fileName
       cat ${fileName}
    """
 
