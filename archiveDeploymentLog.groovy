@@ -5,12 +5,13 @@ node {
 
 def exist = fileExists 'deployment_log.txt'
 
-if (exist == 'false') {
+if (exist != 'true') {
       sh 'echo "DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:" >> "deployment_log.txt"'
       echo 'file Does not exist, Creating'
 }
 
-
+println(exist)
+      
 def date="72022"
 def name="Elijah"
 def appVersion="1.0"
