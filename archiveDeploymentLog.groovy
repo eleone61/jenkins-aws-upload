@@ -38,7 +38,7 @@ sh """
       cat 'deployment.log'
    """
 
- archiveArtifacts artifacts: 'deployment.log', fingerprint: true
+ archiveArtifacts artifacts: fileName, fingerprint: true
 }
 
 def timestamp () {
