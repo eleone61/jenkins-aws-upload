@@ -19,7 +19,7 @@ def exist = fileExists "${fileName}"
 
 if (exist != true) {
     sh """
-         echo 'DeployDate:\t\tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR: \tBUILDID' > $fileName
+         echo 'DeployDate:  \t\tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR: \tBUILDID' > $fileName
          echo 'file Does not exist, Creating'
        """
 }
@@ -29,7 +29,7 @@ println(exist)
       
 sh """
       set +x
-      sed -i '1a\\${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
+      sed -i '1a\\${time} \t${name}  \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
       cat ${fileName}
    """
 
