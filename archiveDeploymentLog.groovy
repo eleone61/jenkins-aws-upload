@@ -15,7 +15,7 @@ def fileName= "/home/jenkins/workspace/log/deployment.log"
 def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
 
-def exist = fileExists 'deployment.log'
+  def exist = fileExists "${fileName}"
 
 if (exist != 'true') {
       sh """
@@ -33,7 +33,6 @@ sh """
      # echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
       
       sed '1 a\\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
-      cat $fileName
       echo "\n"
    """
 
