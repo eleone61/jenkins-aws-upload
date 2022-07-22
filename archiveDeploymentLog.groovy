@@ -32,11 +32,11 @@ sh """
 #      echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
 #      echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
       
-      sed -i '1i ${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
-      echo "\n"
+      sed -i '2i ${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
+      cat ${fileName}
    """
 
-  archiveArtifacts artifacts: "/home/jenkins/workspace/log/deployment.log", fingerprint: true
+//   archiveArtifacts artifacts: "/home/jenkins/workspace/log/deployment.log", fingerprint: true
 }
 
 def timestamp () {
