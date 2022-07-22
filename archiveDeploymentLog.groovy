@@ -15,13 +15,13 @@ def fileName= "/home/jenkins/workspace/log/deployment.log"
 def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
 
-  def exist = fileExists "${fileName}"
+def exist = fileExists "${fileName}"
 
 if (exist != true) {
-      sh """
-            echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR:' > $fileName
-           echo 'file Does not exist, Creating'
-         """
+    sh """
+         echo 'DeployDate: \tAppName: \tAppVersion: \tDeployedto: \tApprovedBy: \tKISAM CR: \tBUILDID' > $fileName
+         echo 'file Does not exist, Creating'
+       """
 }
 
 println(exist)      
@@ -29,10 +29,7 @@ println(exist)
       
 sh """
       set +x
-#      echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
-#      echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
-      
-      sed -i '1a\\ ${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
+      sed -i '1a\\${time} \t\t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}' $fileName
       cat ${fileName}
    """
 
@@ -43,3 +40,6 @@ def timestamp () {
     def now = new Date()
     return now.format("E MMM dd HH:mm:ss z yyy", TimeZone.getTimeZone("America/New_York"))
 }
+
+//       echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
+//       echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
