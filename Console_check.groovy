@@ -2,12 +2,12 @@ node {
 def consoleCheck = sh returnStdout: true, script:  """  
                                                       if ( [ -s console.log ] )
                                                       then
-                                                          echo "true"
+                                                          echo "true" \ sed '\$d'
                                                       elif [ -f console.log ]
                                                       then
-                                                        echo "null"
+                                                        echo "null" | sed '\$d'
                                                     else 
-                                                        echo "false"
+                                                        echo "false" | sed '\$d'
                                                     fi
                                                   """
 
@@ -17,7 +17,7 @@ def consoleCheck = sh returnStdout: true, script:  """
 
   stage('Console Check') {
     println(consoleCheck)
-    if (consoleCheck == false) {
+    if (consoleCheck == "false") {
       echo "Console Log exists"
     } else {
         error "No Console Log exists";
