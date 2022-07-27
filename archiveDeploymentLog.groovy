@@ -15,13 +15,13 @@ def fileName= "/home/jenkins/workspace/log/deployment.log"
 def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
 sh """  
-      if ( [-z 'console.log'] )
+      if ( [ -s console.log ] )
 
     then
 
         echo "File exists"
        
-    else
+    else 
         echo "File does not exist"
 
     fi
