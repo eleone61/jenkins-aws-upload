@@ -1,4 +1,3 @@
-node {
 def consoleCheck = sh returnStdout: true, script:  """  
                                                       if ( [ -s console.log ] )
                                                       then
@@ -10,6 +9,8 @@ def consoleCheck = sh returnStdout: true, script:  """
                                                         echo "false" 
                                                     fi
                                                   """
+node {
+
 
   
   
