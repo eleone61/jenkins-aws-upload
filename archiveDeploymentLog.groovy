@@ -14,6 +14,20 @@ def home = "Home"
 def fileName= "/home/jenkins/workspace/log/deployment.log" 
 def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
+sh """  
+      if [ -f 'console.log' ];
+
+    then
+
+        echo "File exists"
+
+    else
+
+        echo "File does not exist"
+
+    fi
+  """
+
 
 def exist = fileExists "${fileName}"
 
@@ -43,3 +57,4 @@ def timestamp () {
 
 //       echo "DeployDate: $time \tAppName: $name \tAppVersion: $appVersion \tDeployedto: $targetEnv \tApprovedBy: ${approver} \tKISAM CR: $crNumber" >> $fileName
 //       echo "\t${time} \t${name} \t${appVersion} \t${targetEnv} \t${approver} \t${crNumber} \t${env.BUILD_TAG}" >> $metricContent
+
