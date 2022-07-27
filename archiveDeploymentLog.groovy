@@ -15,7 +15,7 @@ def fileName= "/home/jenkins/workspace/log/deployment.log"
 def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
 sh """  
-      if ( [-s 'console.log'] )
+      if ( [-z 'console.log'] )
 
     then
 
