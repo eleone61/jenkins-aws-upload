@@ -2,12 +2,12 @@ node {
 def consoleCheck = sh returnStdout: true, script:  """  
                                                       if ( [ -s console.log ] )
                                                       then
-                                                          echo "true" | sed '\$d'
+                                                          echo "true" 
                                                       elif [ -f console.log ]
                                                       then
-                                                        echo "null" | sed '\$d'
+                                                        echo "null" 
                                                     else 
-                                                        echo "false" | sed '\$d'
+                                                        echo "false" 
                                                     fi
                                                   """
 
