@@ -20,10 +20,6 @@ sh """
     then
 
         echo "File exists"
-
-    elif [ 'console.log' = ""]
-    then
-       echo 'File is empty'
        
     else
         echo "File does not exist"
