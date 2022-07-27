@@ -19,8 +19,8 @@ def consoleCheck = sh returnStdout: true, script:  """
     println(consoleCheck)
     if (consoleCheck == false) {
       echo "Console Log exists"
-    }else {
-      error "No Console Log exists";
+    } else {
+        error "No Console Log exists";
     }
   }
 }
