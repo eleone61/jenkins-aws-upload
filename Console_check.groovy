@@ -20,7 +20,7 @@ def consoleCheck = sh returnStdout: true, script:  """
     if (consoleCheck == "TRUE") {
       echo "Console Log exists"
     }else {
-      break;
+      error "No Console Log exists";
     }
   }
 }
