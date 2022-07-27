@@ -11,8 +11,8 @@ node {
                                                     fi
                                                   """
   stage('Console Check') {
-    println(consoleCheck)
-    if (consoleCheck != "false") 
+    println(consoleCheck.trim())
+    if (consoleCheck.trim() != "false") 
     {
       echo "Console Log exists"
     } 
