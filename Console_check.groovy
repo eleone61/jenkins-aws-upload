@@ -23,7 +23,7 @@ def consoleCheck = sh returnStdout: true, script:  """
     } 
     else 
     {
-        error "No Console Log exists";
+        error "No Console Log exists"
     }
   }
 }
