@@ -12,7 +12,7 @@ node {
                                                   """
   stage('Console Check') {
     println(consoleCheck)
-    if (consoleCheck == "false") 
+    if (consoleCheck != "false") 
     {
       echo "Console Log exists"
     } 
