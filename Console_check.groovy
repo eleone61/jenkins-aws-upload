@@ -23,5 +23,4 @@ def consoleCheck = sh returnStdout: true, script:  """
       break;
     }
   }
-  }
 }
