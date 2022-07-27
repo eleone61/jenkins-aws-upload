@@ -16,11 +16,13 @@ def consoleCheck = sh returnStdout: true, script:  """
   
 
   stage('Console Check') {
-    sh 'echo "$consoleCheck"'
     println(consoleCheck)
-    if (consoleCheck == 'false') {
+    if (consoleCheck == '') 
+    {
       echo "Console Log exists"
-    } else {
+    } 
+    else 
+    {
         error "No Console Log exists";
     }
   }
