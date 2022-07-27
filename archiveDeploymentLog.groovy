@@ -16,11 +16,12 @@ def metricContent = "/home/jenkins/workspace/log/metrics.log"
 def time = timestamp()
 sh """  
       if ( [ -s console.log ] )
-
+      then
+          echo "File exists"
     then
-
-        echo "File exists"
-       
+        if [ -f console.log ]
+        echo "File exists but is Null"
+        fi
     else 
         echo "File does not exist"
 
