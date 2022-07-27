@@ -16,6 +16,5 @@ node {
     {
       echo "Console Log exists"
     } 
-    }
   }
 }
