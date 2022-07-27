@@ -17,7 +17,7 @@ def consoleCheck = sh returnStdout: true, script:  """
 
   stage('Console Check') {
     println(consoleCheck)
-    if (consoleCheck != 'FALSE') {
+    if (consoleCheck != "FALSE") {
       echo "Console Log exists"
     }else {
       break;
