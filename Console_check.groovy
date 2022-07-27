@@ -1,5 +1,5 @@
 node {
-  def consoleCheck = sh script:  """  
+  def consoleCheck = sh returnStdout: true, script:  """  
                                                       if ( [ -s console.log ] )
                                                       then
                                                           echo 'true' 
