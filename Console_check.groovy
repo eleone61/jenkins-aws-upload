@@ -1,4 +1,4 @@
-
+node {
 def consoleCheck = sh script:  """  
                                   if ( [ -s console.log ] )
                                   then
@@ -14,8 +14,7 @@ def consoleCheck = sh script:  """
   
   
   
-  
-node {
+
   stage('Console Check') {
     println(consoleCheck)
   }
