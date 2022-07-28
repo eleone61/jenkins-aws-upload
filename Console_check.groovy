@@ -8,9 +8,9 @@ node {
                                                   """
   stage('Console Check') {
     println(consoleCheck)
-     if (consoleCheck == "true") 
+     if (consoleCheck != "true") 
      {
-       echo "Console Log exists"
+       error("Console Log does not exist")
      } 
   }
 }
