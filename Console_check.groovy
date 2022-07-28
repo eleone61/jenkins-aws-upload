@@ -1,8 +1,10 @@
 node {
   def consoleCheck = sh returnStdout: true, script:  """  
                                                       if ( [ -s console.log ] )
-
-                                                    fi
+                                                      then
+                                                      true
+                                                      fi
+   
                                                   """
   stage('Console Check') {
     println(consoleCheck)
