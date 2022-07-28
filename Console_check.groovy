@@ -1,8 +1,8 @@
 node {
   def consoleCheck = sh returnStdout: true, script:  """  
-                                                      if ( [ -s console.log ] )
+                                                      if ( [ -s console.log ] );
                                                       then
-                                                      true
+                                                      true;
                                                       fi
    
                                                   """
