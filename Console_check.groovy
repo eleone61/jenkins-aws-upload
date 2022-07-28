@@ -2,7 +2,7 @@ node {
   def consoleCheck = sh returnStdout: true, script:  """  
                                                       if ( [ -s console.log ] );
                                                       then
-                                                      true;
+                                                      echo -n "true";
                                                       fi
    
                                                   """
