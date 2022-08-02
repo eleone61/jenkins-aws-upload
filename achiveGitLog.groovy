@@ -1,6 +1,6 @@
 node {
   stage('Archive Git Log') {
-    git changlog: true,
+    git changelog: true,
       url: "https://github.com/eleone61/jenkins-aws-upload.git"
 //     sh """
 //           ls -al
