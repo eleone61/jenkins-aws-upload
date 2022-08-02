@@ -1,7 +1,7 @@
 node {
   stage('Archive Git Log') {
     sh """
-          ls =al
+          ls -al
           git log >> git.log
        """
     
