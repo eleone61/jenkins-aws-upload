@@ -5,7 +5,7 @@ node {
       git branch: "main", poll: false, url: 'https://github.com/eleone61/Cloned_repo.git'
       sh """
            ls -al
-           git log "https://github.com/eleone61/jenkins-aws-upload.git" > git.log
+           git log > git.log
           """
     }
 
