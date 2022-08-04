@@ -1,6 +1,6 @@
 node {
   stage('Archive Git Log') {
-    withCredentials([$class: 'StringBinding', credentialsID: 'testID', variable: 'testID']) {
+    withCredentials([string(credentialsID: 'testID', variable: 'testID')]) {
       
       git branch: 'main', credentialID: testID, poll: false, url: 'git@github.com:eleone61/Cloned_repo.git'
       sh """
