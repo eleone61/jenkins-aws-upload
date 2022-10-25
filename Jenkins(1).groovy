@@ -8,6 +8,7 @@ node{
 
     while (pipelineENV != 'PREPROD') {
         pipelineENV = envSelect()
+	println(pipelineENV["CR"])
         crCheck(pipelineENV["CR"])
         buildDescrpt(pipelineENV["CR"])
     }
