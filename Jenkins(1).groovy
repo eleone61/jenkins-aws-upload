@@ -30,6 +30,7 @@ def envSelect (){
 					     choice(name: 'environment',
 						    choices: envTestList)]
 			println(req)
+			return req
 		}
 		
 		if (req.environment == 'END') {
@@ -52,7 +53,6 @@ def envSelect (){
 			}
 		}
 	}
-	return req
 }
 
 
