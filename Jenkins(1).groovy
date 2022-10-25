@@ -56,7 +56,7 @@ def envSelect (){
 
 
 def crCheck(changeRequest) {
-    CR = changeRequest.toString()
+    def CR = changeRequest.toString()
     sh """
             if [[ "${CR}" =~ N/A ]] || [[ "${CR}" =~ n/a ]] || [[ "${CR}" =~ N/a ]] || [[ "${CR}" =~ n/A ]]; then 
     		echo "${CR} is valid"
