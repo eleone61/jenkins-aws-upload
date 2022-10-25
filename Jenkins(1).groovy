@@ -8,8 +8,8 @@ node{
 
     while (pipelineENV != 'PREPROD') {
         pipelineENV = envSelect()
-        crCheck(pipelineENV["CR"])
-        buildDescrpt(pipelineENV["CR"])
+        crCheck()
+        buildDescrpt()
     }
 
     stage('Finished') {
@@ -55,8 +55,8 @@ def envSelect (){
 }
 
 
-def crCheck(changeRequest) {
-    def CR = changeRequest
+def crCheck() {
+    def CR = pipelineENV.CR
     println(CR)
     sh """
             if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]; then 
