@@ -58,21 +58,21 @@ def envSelect (){
 def crCheck(changeRequest) {
     def CR = changeRequest
     sh """
-            if [[ "$CR" =~ N/A ]] || [[ "$CR" =~ n/a ]] || [[ "$CR" =~ N/a ]] || [[ "$CR" =~ n/A ]]; then 
-                echo "$CR is valid"
-                break
-            else
-                if [ "$CR" -ge 5 ]; then
-                    if [[ $(#CR) =~ [0-9] ]] || [[ "$CR" =~ [a..z] ]]; then
-                        echo "$CR is valid!"
-                    else
-                        echo "$CR is not valid"
-                    fi
-                else
-                    echo "$CR is less than 5 characters"
-                fi
-            fi
-        """
+            if [[ "$1" =~ N/A ]] || [[ "$1" =~ n/a ]] || [[ "$1" =~ N/a ]] || [[ "$1" =~ n/A ]]; then # $1 because it corresponds to the posistion of the parameter after the function name
+    		echo "$1 is valid"
+    		break
+	    else
+		    if [ ${#1} -ge 5 ]; then
+			if [[ "$1" =~ [0-9] ]] || [[ "$1" =~ [a..z] ]]; then
+			    echo "$1 is valid!"
+			else
+			    echo "$1 is not valid"
+			fi
+		    else
+			echo "$1 is less than 5 characters"
+		    fi
+		fi
+	"""
 }
 
 def buildDescript(changeRequest) {
