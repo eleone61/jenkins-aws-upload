@@ -1,5 +1,5 @@
 def pipelineENV = ["env":"",
-                   "CR":""]
+                   "changeRequest":""]
 
 node{
     stage('start') {
@@ -8,9 +8,9 @@ node{
 
     while (pipelineENV != 'PREPROD') {
         pipelineENV = envSelect()
-	println(pipelineENV["CR"])
-        crCheck(pipelineENV["CR"])
-        buildDescrpt(pipelineENV["CR"])
+	println(pipelineENV["changeRequest"])
+        crCheck(pipelineENV["changeRequest"])
+        buildDescrpt(pipelineENV["changeRequest"])
     }
 
     stage('Finished') {
