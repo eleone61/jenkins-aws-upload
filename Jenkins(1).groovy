@@ -21,7 +21,8 @@ def envSelect (){
 	stage('environment select') {
 		envTestList = ["DSIT","SITE","PTE","EITE","END"]
 		
-		def req = ""
+		def req = ["environment": "",
+			   "changeRequest": ""]
 		
 		timeout(time:1, unit:'DAYS') {
 			req = input message: "Select an environment to deploy Artifact?",
