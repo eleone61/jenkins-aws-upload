@@ -75,6 +75,7 @@ def crCheck(changeRequest) {
 				echo "${CR} is less than 5 characters"
 			
 		   fi
+	     fi
 	"""
 }
 
