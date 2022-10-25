@@ -10,7 +10,7 @@ node{
         pipelineENV = envSelect()
 	println(pipelineENV["changeRequest"])
         crCheck(pipelineENV["changeRequest"])
-        buildDescrpt(pipelineENV["changeRequest"])
+        buildDescript(pipelineENV["changeRequest"])
     }
 
     stage('Finished') {
