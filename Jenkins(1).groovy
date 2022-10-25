@@ -56,7 +56,7 @@ def envSelect (){
 
 
 def crCheck(changeRequest) {
-    def CR = changeRequest
+    CR = changeRequest
     sh """
             if [[ "$1" =~ N/A ]] || [[ "$1" =~ n/a ]] || [[ "$1" =~ N/a ]] || [[ "$1" =~ n/A ]]; then # $1 because it corresponds to the posistion of the parameter after the function name
     		echo "$1 is valid"
