@@ -58,7 +58,7 @@ def envSelect (){
 
 
 def crCheck(changeRequest) {
-    def CR = changeRequest.toString
+    def CR = changeRequest.toString()
     println(CR)
     sh """
     	if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
