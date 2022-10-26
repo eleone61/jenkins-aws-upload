@@ -58,7 +58,7 @@ def envSelect (){
 
 
 def crCheck(changeRequest) {
-    def CR = "${changeRequest}"
+    def CR = changeRequest.toString
     println(CR)
     sh """
     	if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
@@ -66,7 +66,7 @@ def crCheck(changeRequest) {
 		echo "${CR} is valid"
     		break
 	else
-		if [ #"${CR}" -ge 5 ]
+		if [ #${CR} -ge 5 ]
 		then
 			if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
 			then
