@@ -66,7 +66,7 @@ def crCheck(changeRequest) {
 		echo "${CR} is valid"
     		break
 	else
-		if [ ${#\CR} -ge 5 ]
+		if [ ${\#\CR} -ge 5 ]
 		then
 			if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
 			then
