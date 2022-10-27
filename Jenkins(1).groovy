@@ -63,6 +63,7 @@ def crCheck(changeRequest) {
     crLen = CR.length()
     println(CR)
     sh """
+    	set -a 
     	if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
 	then
 		echo "${CR} is valid"
