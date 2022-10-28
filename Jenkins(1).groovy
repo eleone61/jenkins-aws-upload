@@ -87,7 +87,7 @@ def crCheck(changeRequest) {
 			break
 		fi
 	fi
-	""", returnStdout: true
+	"""
  	return valid
 }
 
