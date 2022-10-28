@@ -1,6 +1,6 @@
 def pipelineENV = ["env":"",
                    "changeRequest":""]
-def crValid = ""
+ def crValid = ""
 
 node{
     stage('start') {
@@ -68,7 +68,7 @@ def crCheck(changeRequest) {
 							if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
 							then
 								echo "${CR} is valid"
-								echo "true" | sed 's/ //g' > validCR
+								echo "true" | sed 's/ //g' > valid
 								break
 							else
 								if [ ${crLen} -ge 5 ]
@@ -78,12 +78,12 @@ def crCheck(changeRequest) {
 									    echo "${CR} is valid!"
 									else
 									    echo "${CR} is not valid"
-									    echo "false" | sed 's/ //g' > validCR
+									    echo "false" | sed 's/ //g' > valid
 									    break
 									fi
 								else
 									echo "${CR} is less than 5 characters"
-									echo "false" | sed 's/ //g' > validCR
+									echo "false" | sed 's/ //g' > valid
 									break
 								fi
 							fi
