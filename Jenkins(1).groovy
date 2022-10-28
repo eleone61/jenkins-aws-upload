@@ -43,13 +43,15 @@ def envSelect (){
  			crValid = crCheck(req["changeRequest"])
  			println (crValid)
 			while ( crValid == "false" ) {
-				crValid = crCheck(req["changeRequest"])
 				req = input message: "Select an environment to deploy Artifact?",
 					id: 'DeployPackage',
 					parameters: [string(description: 'Missing KISAM change request number', name: 'changeRequest'),
 						     choice(name: 'environment',
 							    choices: envTestList)]
 				println(req)
+				crValid = ""
+				crValid = crCheck(req["changeRequest"])
+				
 				if (req.environtment == 'END') {
 					return req
 					break;
