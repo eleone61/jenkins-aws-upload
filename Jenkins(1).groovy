@@ -89,6 +89,7 @@ def crCheck(changeRequest) {
 	fi
 	"""
 	def validCR = readFile("valid")
+	println(validCR)
  	return validCR
 }
 
