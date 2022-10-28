@@ -23,7 +23,7 @@ def envSelect (){
 		envTestList = ["DSIT","SITE","PTE","EITE","END"]
 		
 		def req = ""
-		crValid = false
+// 		crValid = false
 		
 		timeout(time:1, unit:'DAYS') {
 			req = input message: "Select an environment to deploy Artifact?",
@@ -40,7 +40,7 @@ def envSelect (){
 		}
 		
 		if (req.environment != 'PROD') {
-// 			crCheck(req["changeRequest"], crValid)
+ 			crValid = crCheck(req["changeRequest"])
 			while ( req.changeRequest == "" || crValid == false) {
 				req = input message: "Select an environment to deploy Artifact?",
 			   		id: 'DeployPackage',
