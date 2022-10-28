@@ -67,7 +67,7 @@ def crCheck(changeRequest) {
     def valid = sh returnStdout: true, script: """
 							if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
 							then
-// 								echo "${CR} is valid"
+ 								#echo "${CR} is valid"
 								echo "true" | sed 's/ //g' > valid
 								break
 							else
@@ -77,12 +77,12 @@ def crCheck(changeRequest) {
 									then
 									    echo "${CR} is valid!"
 									else
-// 									    echo "${CR} is not valid"
+ 									    #echo "${CR} is not valid"
 									    echo "false" | sed 's/ //g' > valid
 									    break
 									fi
 								else
-// 									echo "${CR} is less than 5 characters"
+ 									#echo "${CR} is less than 5 characters"
 									echo "false" | sed 's/ //g' > valid
 									break
 								fi
