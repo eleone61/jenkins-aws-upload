@@ -78,7 +78,7 @@ def crCheck(changeRequest) {
 						    echo "${CR} is valid!"
 						else
 						    echo "${CR} is not valid"
-						    echo "false" > valid
+						    echo "false" | sed "\$d" > valid
 						    break
 						fi
 					else
