@@ -85,7 +85,7 @@ def crCheck(changeRequest) {
 		fi
 	fi
 	"""
-	return crValid
+// 	return crValid
 }
 
 def buildDescript(changeRequest) {
