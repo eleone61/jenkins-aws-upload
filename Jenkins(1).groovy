@@ -68,7 +68,7 @@ def crCheck(changeRequest) {
 							if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
 							then
  								#echo "${CR} is valid"
-								echo "true" | sed 's/ //g' > valid
+								echo "true" > valid
 								break
 							else
 								if [ ${crLen} -ge 5 ]
@@ -78,12 +78,12 @@ def crCheck(changeRequest) {
 									    echo "${CR} is valid!"
 									else
  									    #echo "${CR} is not valid"
-									    echo "false" | sed 's/ //g' > valid
+									    echo "false" > valid
 									    break
 									fi
 								else
  									#echo "${CR} is less than 5 characters"
-									echo "false" | sed 's/ //g' > valid
+									echo "false" > valid
 									break
 								fi
 							fi
