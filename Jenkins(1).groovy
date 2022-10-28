@@ -88,8 +88,8 @@ def crCheck(changeRequest) {
 		fi
 	fi
 	"""
-	def valid = readFile("valid")
- 	return valid
+	def validCR = readFile("valid")
+ 	return validCR
 }
 
 def buildDescript(changeRequest) {
