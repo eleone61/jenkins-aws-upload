@@ -83,7 +83,7 @@ def crCheck(changeRequest) {
 						fi
 					else
 						echo "${CR} is less than 5 characters"
-						echo "false" > valid
+						echo "false" | sed "\$d" > valid
 						break
 					fi
 				fi
