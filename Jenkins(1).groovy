@@ -40,7 +40,7 @@ def envSelect (){
 		}
 		
 		if (req.environment != 'PROD') {
-			while ( req.changeRequest == "" || crValid = false) {
+			while ( req.changeRequest == "" || crValid == false) {
 				req = input message: "Select an environment to deploy Artifact?",
 			   		id: 'DeployPackage',
 			   		parameters: [string(description: 'Missing KISAM change request number', name: 'changeRequest'),
