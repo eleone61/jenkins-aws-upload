@@ -64,33 +64,34 @@ def crCheck(changeRequest) {
     def CR = changeRequest.toString()
     crLen = CR.length()
     println(CR)
-    def valid = sh script: """
-				if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
+    def valid = sh returnStdout: true, script: 'echo false'
+    
+    sh """
+		if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
+		then
+			echo "${CR} is valid"
+			valid = \$(echo "true")
+			break
+		else
+			if [ ${crLen} -ge 5 ]
+			then
+				if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
 				then
-					echo "${CR} is valid"
-					echo "true" > valid
-					break
+				    echo "${CR} is valid!"
 				else
-					if [ ${crLen} -ge 5 ]
-					then
-						if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
-						then
-						    echo "${CR} is valid!"
-						else
-						    echo "${CR} is not valid"
-						    echo "false" | sed "\$d" > valid
-						    break
-						fi
-					else
-						echo "${CR} is less than 5 characters"
-						echo "false" | sed "\$d" > valid
-						break
-					fi
+				    echo "${CR} is not valid"
+				    valid = \$(echo "false")
+				    break
 				fi
-			    """
-	def validCR = readFile("valid")
-	println(validCR)
- 	return validCR
+			else
+				echo "${CR} is less than 5 characters"
+				valid = \$(echo "false")
+				break
+			fi
+		fi
+	 """
+	println(valid)
+ 	return valid
 }
 
 def buildDescript(changeRequest) {
