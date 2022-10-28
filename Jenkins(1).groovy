@@ -52,7 +52,8 @@ def envSelect (){
 				if (req.environtment == 'END') {
 					return req
 					break;
-				}	
+				}
+				crValid = ""
 			}
 		}
 		return req
@@ -75,7 +76,8 @@ def crCheck(changeRequest) {
 								then
 									if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
 									then
-									    echo "${CR} is valid!"
+									    #echo "${CR} is valid!"
+									    echo -n "true"
 									else
  									    #echo "${CR} is not valid"
 									    echo -n "false"
