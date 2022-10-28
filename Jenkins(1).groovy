@@ -39,7 +39,7 @@ def envSelect (){
 		}
 		
 		if (req.environment != 'PROD') {
-			crCheck(pipelineENV["changeRequest"])
+			crCheck(req["changeRequest"])
 			while ( req.changeRequest == "" || crValid == false) {
 				req = input message: "Select an environment to deploy Artifact?",
 			   		id: 'DeployPackage',
