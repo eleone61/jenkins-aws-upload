@@ -79,10 +79,12 @@ def crCheck(changeRequest) {
 			else
 			    echo "${CR} is not valid"
 			    valid=false
+			    break
 			fi
 		else
 			echo "${CR} is less than 5 characters"
 			valid=false
+			break
 		fi
 	fi
 	"""
