@@ -10,7 +10,6 @@ node{
     while (pipelineENV != 'PREPROD') {
         pipelineENV = envSelect()
 	println(pipelineENV["changeRequest"])
-        crCheck(pipelineENV["changeRequest"])
         buildDescript(pipelineENV["changeRequest"])
     }
 
@@ -40,6 +39,7 @@ def envSelect (){
 		}
 		
 		if (req.environment != 'PROD') {
+			crCheck(pipelineENV["changeRequest"])
 			while ( req.changeRequest == "" || crValid == false) {
 				req = input message: "Select an environment to deploy Artifact?",
 			   		id: 'DeployPackage',
