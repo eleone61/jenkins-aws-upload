@@ -1,6 +1,6 @@
 def pipelineENV = ["env":"",
                    "changeRequest":""]
-//  crValid = false
+def crValid = ""
 
 node{
     stage('start') {
@@ -59,10 +59,11 @@ def envSelect (){
 }
 
 
-def crCheck(changeRequest, valid) {
+def crCheck(changeRequest) {
     def CR = changeRequest.toString()
     crLen = CR.length()
     println(CR)
+    def valid = ""
     sh """
     	if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
 	then
