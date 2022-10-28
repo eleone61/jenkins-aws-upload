@@ -63,31 +63,30 @@ def crCheck(changeRequest) {
     def CR = changeRequest.toString()
     crLen = CR.length()
     println(CR)
-    def valid = ""
-    sh """
-    	if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
-	then
-		echo "${CR} is valid"
-		echo "true" > valid
-    		break
-	else
-		if [ ${crLen} -ge 5 ]
-		then
-			if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
-			then
-			    echo "${CR} is valid!"
-			else
-			    echo "${CR} is not valid"
-			    echo "false" > valid
-			    break
-			fi
-		else
-			echo "${CR} is less than 5 characters"
-			echo "false" > valid
-			break
-		fi
-	fi
-	"""
+    def valid = sh script: """
+				if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
+				then
+					echo "${CR} is valid"
+					echo "true" > valid
+					break
+				else
+					if [ ${crLen} -ge 5 ]
+					then
+						if [[ ${CR} =~ [0-9] ]] || [[ ${CR} =~ [a..z] ]]
+						then
+						    echo "${CR} is valid!"
+						else
+						    echo "${CR} is not valid"
+						    echo "false" > valid
+						    break
+						fi
+					else
+						echo "${CR} is less than 5 characters"
+						echo "false" > valid
+						break
+					fi
+				fi
+			    """
 	def validCR = readFile("valid")
 	println(validCR)
  	return validCR
