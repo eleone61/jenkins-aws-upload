@@ -1,6 +1,6 @@
 def pipelineENV = ["env":"",
                    "changeRequest":""]
- crValid = false
+//  crValid = false
 
 node{
     stage('start') {
@@ -23,6 +23,7 @@ def envSelect (){
 		envTestList = ["DSIT","SITE","PTE","EITE","END"]
 		
 		def req = ""
+		crValid = false
 		
 		timeout(time:1, unit:'DAYS') {
 			req = input message: "Select an environment to deploy Artifact?",
@@ -39,7 +40,7 @@ def envSelect (){
 		}
 		
 		if (req.environment != 'PROD') {
-			crCheck(req["changeRequest"])
+			crCheck(req["changeRequest"], crValid)
 			while ( req.changeRequest == "" || crValid == false) {
 				req = input message: "Select an environment to deploy Artifact?",
 			   		id: 'DeployPackage',
@@ -58,10 +59,9 @@ def envSelect (){
 }
 
 
-def crCheck(changeRequest) {
+def crCheck(changeRequest, valid) {
     def CR = changeRequest.toString()
     crLen = CR.length()
-    def valid = crValid
     println(CR)
     sh """
     	if [[ ${CR} =~ N/A ]] || [[ ${CR} =~ n/a ]] || [[ ${CR} =~ N/a ]] || [[ ${CR} =~ n/A ]]
