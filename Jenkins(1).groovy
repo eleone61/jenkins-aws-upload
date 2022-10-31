@@ -10,7 +10,7 @@ node{
     while (pipelineENV != 'PREPROD') {
         pipelineENV = envSelect()
 // 	println(pipelineENV["changeRequest"])
-        buildDescript(pipelineENV["changeRequest"])
+        buildDescript(pipelineENV)
     }
 
     stage('Finished') {
@@ -96,9 +96,9 @@ def crCheck(changeRequest) {
  	return valid
 }
 
-def buildDescript(changeRequest) {
+def buildDescript(pipelineENV) {
     CR = changeRequest.toString()
-    println(CR)
-    currentBuild.description = CR
+    println(pipelineENV["env"])
+    currentBuild.description = "The current build is in environment: ${pipelineENV["env"] \nChange Request Value is: ${pipelineEnv["changeRequest"]"}
 }
 
