@@ -29,7 +29,7 @@ def envSelect (){
 			req = input message: "Select an environment to deploy Artifact?",
 				id: 'envResponse',
 			    	parameters: [string(description: 'Change Request number from KISAM', name: 'changeRequest'),
-					     choice(name: 'environment',
+					     choice(name: 'env',
 						    choices: envTestList)]
 			println(req)
 		}
@@ -46,13 +46,13 @@ def envSelect (){
 				req = input message: "Select an environment to deploy Artifact?",
 					id: 'DeployPackage',
 					parameters: [string(description: 'Missing KISAM change request number', name: 'changeRequest'),
-						     choice(name: 'environment',
+						     choice(name: 'env',
 							    choices: envTestList)]
 				println(req)
 				crValid = ""
 				crValid = crCheck(req["changeRequest"])
 				
-				if (req.environtment == 'END') {
+				if (req.env == 'END') {
 					return req
 					break;
 				}
