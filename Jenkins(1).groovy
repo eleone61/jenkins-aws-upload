@@ -99,6 +99,6 @@ def crCheck(changeRequest) {
 def buildDescript(pipelineENV) {
     CR = changeRequest.toString()
     println(pipelineENV["env"])
-    currentBuild.description = "The current build is in environment: ${pipelineENV["env"] \nChange Request Value is: ${pipelineEnv["changeRequest"]"}
+	currentBuild.description = "The current build is in environment: ${pipelineENV["env"]} \nChange Request Value is: ${pipelineEnv["changeRequest"]}"}
 }
 
