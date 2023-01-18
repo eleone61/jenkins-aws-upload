@@ -6,6 +6,15 @@ node{
     stage('start') {
         echo 'start'
     }
+	
+    stage('Simulate Build and Test') {
+	echo 'Build'
+	echo 'Test'
+    }
+
+    stage('Simulate Push and Pull to Nexus') {
+		echo 'Push and Pull to repo'
+    }
 
     while (pipelineENV != 'PREPROD') {
         pipelineENV = envSelect()
@@ -20,7 +29,7 @@ node{
 
 def envSelect (){
 	stage('environment select') {
-		envTestList = ["DSIT","SITE","PTE","EITE","END"]
+		envTestList = ["DSIT","SITE","PTE","PROD","END"]
 		
 		def req = ""
 // 		crValid = false
