@@ -8,7 +8,7 @@ node{
     }
 	
     stage('Simulate Build and Test') {
-	echo 'Build'
+	echo 'Build 1'
 	echo 'Test'
     }
 
